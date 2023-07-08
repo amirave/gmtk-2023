@@ -22,6 +22,8 @@ public class HookMovement : MonoBehaviour
     [SerializeField] private AnimationCurve _accelerationFactorFromDot;
     [SerializeField] private int _totalHealth = 4;
 
+    [SerializeField] private LineRenderer _ropeLine;
+
     [Header("Capture Animation")] 
     [SerializeField] private float _captureMoveSpeed = 0.1f;
     [SerializeField] private float _captureHoldDuration = 0.5f;
@@ -62,8 +64,7 @@ public class HookMovement : MonoBehaviour
         else
             _spriteRenderer.color = Color.white;
 
-        if (Input.GetKeyDown(KeyCode.R))
-            CaptureFish(null);
+        _ropeLine.SetPositions(new[]{transform.position + Vector3.up * 0.5f, new Vector3(1.14f, 5.01f)});
     }
 
     private void MovePlayer()
@@ -130,6 +131,7 @@ public class HookMovement : MonoBehaviour
             return;
         }
 
+        // Cast back
         prevTime = Time.time;
         while (transform.position.y > origPos.y)
         {
@@ -140,6 +142,7 @@ public class HookMovement : MonoBehaviour
             await UniTask.Yield();
         }
 
+        // Give and then remove invincibility
         playerState = PlayerState.Moving;
         _invincible = true;
         await UniTask.Delay(1000 * (int)_invincibilityTime);
