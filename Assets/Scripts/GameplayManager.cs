@@ -9,9 +9,10 @@ namespace DefaultNamespace
         public static GameplayManager Instance { get; private set; }
 
         [SerializeField] private float _topMargin;
-        [SerializeField] private MenuScreen _hudScreen;
+        [SerializeField] private HudMenuScreen _hudScreen;
         [SerializeField] private float _scorePerSecond = 100;
         [SerializeField] public HookMovement player;
+        [SerializeField] private Sprite[] _emotionSprites;
         
         private Bounds _arenaBounds;
         private Camera _mainCam;
@@ -40,6 +41,9 @@ namespace DefaultNamespace
         void Start()
         {
             _phaseSpawner.Begin();
+            _hudScreen.SetEmotion(_emotionSprites[0]);
+
+            player.OnCaptureFish.AddListener(OnPlayerDamage);
         }
 
         private void Update()
@@ -63,6 +67,19 @@ namespace DefaultNamespace
         private void OnDestroy()
         {
             Instance = null;
+        }
+
+        private void OnPlayerDamage(int health)
+        {
+            _hudScreen.SetEmotion(_emotionSprites[player.GetTotalHealth() - health]);
+            
+            if (health == 0)
+                OnPlayerDeath();
+        }
+
+        private void OnPlayerDeath()
+        {
+            Time.timeScale = 0;
         }
 
         public Bounds GetArenaBounds()

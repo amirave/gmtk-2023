@@ -13,7 +13,7 @@ namespace UI.Screens
 
         private List<CustomText> _textObjects;
         
-        private void Awake()
+        protected virtual void Awake()
         {
             _textObjects = GetComponentsInChildren<CustomText>(true).ToList();
             textReplacements = new();
