@@ -12,8 +12,10 @@ using Random = UnityEngine.Random;
 public class PhaseSpawner : MonoBehaviour
 {
     [SerializeField] private DifficultySettings _difficultySettings;
-    [SerializeField] private List<List<FishSpawnPattern>> _spawnPatterns;
-    
+    [SerializeField] private List<FishSpawnPattern> _easySpawnPatterns;
+    [SerializeField] private List<FishSpawnPattern> _medSpawnPatterns;
+    [SerializeField] private List<FishSpawnPattern> _hardSpawnPatterns;
+
     private float _timeBetweenPhases = 8f;
     private int _obstaclePerPhase = 3;
     private float _timeBetweenObstacles = 1f;
@@ -52,10 +54,7 @@ public class PhaseSpawner : MonoBehaviour
         _timeBetweenPhases = 1/_difficultySettings.phaseRate.GetCurrent(_now);
 
         if (!_midPhase && Time.time - _lastPhaseEnd >= _timeBetweenPhases)
-        {
-            var pattern = _spawnPatterns.PickRandom();
             StartPhase(GetRandomSpawnPattern());
-        }
 
         _now += Time.deltaTime;
     }
@@ -63,10 +62,15 @@ public class PhaseSpawner : MonoBehaviour
     private FishSpawnPattern GetRandomSpawnPattern()
     {
         int patternDifficulty = (int)(_difficultySettings.phaseDifficulty.GetCurrent(_now) * _spawnPatterns.Count);
+        var _pattern = patternDifficulty switch
+        {
+            0 => _easySpawnPatterns,
+            1 => _medSpawnPatterns,
+            2 => _hardSpawnPatterns,
+            _ => _easySpawnPatterns
+        };
 
-
-
-        return _spawnPatterns[0][0];
+        return _pattern.PickRandom();
     }
 
     private async void StartPhase(FishSpawnPattern pattern)
