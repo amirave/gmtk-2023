@@ -7,8 +7,9 @@ using UnityEngine;
 [CreateAssetMenu()]
 public class DifficultySettings : ScriptableObject
 {
-    public Difficulty godMeterRate;
-    public Difficulty infectionSurvivalChance;
+    public Difficulty phaseDifficulty;
+    public Difficulty phaseRate;
+    public Difficulty phaseInternalDelay;
 }
 
 [Serializable]

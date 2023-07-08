@@ -12,7 +12,7 @@ using Random = UnityEngine.Random;
 public class PhaseSpawner : MonoBehaviour
 {
     [SerializeField] private DifficultySettings _difficultySettings;
-    [SerializeField] private List<FishSpawnPattern> _spawnPatterns;
+    [SerializeField] private List<List<FishSpawnPattern>> _spawnPatterns;
     
     private float _timeBetweenPhases = 8f;
     private int _obstaclePerPhase = 3;
@@ -25,10 +25,14 @@ public class PhaseSpawner : MonoBehaviour
     
     private GameplayManager gs => GameplayManager.Instance;
 
+    private float _now;
+
     public void Begin()
     {
         _lastPhaseEnd = Time.time;
         _active = true;
+
+        _now = 0;
     }
 
     public void Stop()
@@ -45,11 +49,24 @@ public class PhaseSpawner : MonoBehaviour
         _timeBetweenObstacles = 0; //gs.difficultySettings.timeBetweenObstacles.GetCurrent(gs.GetTime());
         _timeBetweenPhases = 0; //gs.difficultySettings.timeBetweenPhases.GetCurrent(gs.GetTime());
 
+        _timeBetweenPhases = 1/_difficultySettings.phaseRate.GetCurrent(_now);
+
         if (!_midPhase && Time.time - _lastPhaseEnd >= _timeBetweenPhases)
         {
             var pattern = _spawnPatterns.PickRandom();
-            StartPhase(pattern);
+            StartPhase(GetRandomSpawnPattern());
         }
+
+        _now += Time.deltaTime;
+    }
+
+    private FishSpawnPattern GetRandomSpawnPattern()
+    {
+        int patternDifficulty = (int)(_difficultySettings.phaseDifficulty.GetCurrent(_now) * _spawnPatterns.Count);
+
+
+
+        return _spawnPatterns[0][0];
     }
 
     private async void StartPhase(FishSpawnPattern pattern)
@@ -81,7 +98,7 @@ public class PhaseSpawner : MonoBehaviour
             
             Instantiate(spawn.school, spawnPos, rot, transform);
 
-            await UniTask.Delay(TimeSpan.FromSeconds(spawn.delayUntilNext));
+            await UniTask.Delay(TimeSpan.FromSeconds(spawn.delayUntilNext * _difficultySettings.phaseInternalDelay.GetCurrent(_now)));
         }
 
         _midPhase = false;

@@ -10,7 +10,7 @@ namespace Fish
 
         private void Start()
         {
-            transform.position -= _head.transform.position;
+            transform.position = _head.transform.position;
         }
     }
 }

@@ -12,6 +12,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5862513799968691037, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4005736
+      objectReference: {fileID: 0}
+    - target: {fileID: 5862513799968691037, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4005736
+      objectReference: {fileID: 0}
+    - target: {fileID: 5862513799968691037, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -50,6 +58,26 @@ PrefabInstance:
     - target: {fileID: 5862513799968691037, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758217191914556791, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Size.x
+      value: 2.877535
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758217191914556791, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Size.y
+      value: 0.7453459
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758217191914556791, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.42942876
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758217191914556791, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.023680294
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758217191914556791, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Direction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6795482839387109414, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
       propertyPath: m_Size.x
@@ -90,3 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc6fa0c2c647644aa9181564fc22725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1

@@ -8,7 +8,6 @@ using DefaultNamespace;
 public class Pufferfish : FishAI
 {
     [SerializeField] private float _lapTime;
-
     [SerializeField] private float _verticalAccel;
 
     private float _horizontalSpeed;
@@ -36,7 +35,7 @@ public class Pufferfish : FishAI
     protected override void OnHitFloor()
     {
         if (rb.velocity.y < 0)
-            rb.velocity = new Vector3(rb.velocity.x, -rb.velocity.y);
+            rb.velocity = new Vector3(_horizontalSpeed, -rb.velocity.y);
     }
 
     protected override void OnHitRightSide()

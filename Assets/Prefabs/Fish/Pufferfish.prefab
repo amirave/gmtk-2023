@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 448129743781949391, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5862513799968691037, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -51,6 +55,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6758217191914556791, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Size.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758217191914556791, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Size.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758217191914556791, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758217191914556791, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758217191914556791, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Direction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6795482839387109414, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
       propertyPath: m_Size.x
       value: 4.07
@@ -71,7 +95,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pufferfish
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 448129743781949391, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
 --- !u!1 &919667599391091765 stripped
 GameObject:
