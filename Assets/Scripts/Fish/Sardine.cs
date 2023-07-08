@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fish;
 
-public class SardineAI : FishAI
+public class Sardine : FishAI
 {
     private void Start()
     {
-        rb.velocity = transform.rotation * new Vector3(1, 0);
+        rb.velocity = transform.rotation * Vector3.right;
     }
 }
