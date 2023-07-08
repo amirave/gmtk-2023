@@ -21,10 +21,10 @@ public class PhaseSpawner : MonoBehaviour
     private float _timeBetweenObstacles = 1f;
 
     private bool _active = false;
-    private float _lastPhaseEnd = 0;
+    private float _lastPhaseStart = 0;
     private bool _midPhase = false;
     private float _obstacleHeight;
-    
+
     private GameplayManager gs => GameplayManager.Instance;
 
     private float _now;
@@ -32,7 +32,6 @@ public class PhaseSpawner : MonoBehaviour
     public void Begin()
     {
         _difficultySettings = gs.difficulty;
-        _lastPhaseEnd = Time.time;
         _active = true;
 
         _now = 0;
@@ -47,15 +46,14 @@ public class PhaseSpawner : MonoBehaviour
     {
         if (_active == false)
             return;
-        
-        _obstaclePerPhase = 0; //(int) gs.difficultySettings.obstaclesPerPhase.GetCurrent(gs.GetTime());
-        _timeBetweenObstacles = 0; //gs.difficultySettings.timeBetweenObstacles.GetCurrent(gs.GetTime());
-        _timeBetweenPhases = 0; //gs.difficultySettings.timeBetweenPhases.GetCurrent(gs.GetTime());
 
-        _timeBetweenPhases = 1/_difficultySettings.phaseRate.GetCurrent(_now);
+        _timeBetweenPhases = 1 / _difficultySettings.phaseRate.GetCurrent(_now);
 
-        if (!_midPhase && Time.time - _lastPhaseEnd >= _timeBetweenPhases)
+        if (Time.time - _lastPhaseStart >= _timeBetweenPhases)
+        {
+            _lastPhaseStart = Time.time;
             StartPhase(GetRandomSpawnPattern());
+        }
 
         _now += Time.deltaTime;
     }
@@ -84,7 +82,7 @@ public class PhaseSpawner : MonoBehaviour
     {
         _midPhase = true;
         var uniformSpawnRight = Random.value > 0.5f;
-        
+
         foreach (var spawn in pattern.spawns)
         {
             if (spawn.repeatTimes < 1) spawn.repeatTimes = 1;
@@ -120,6 +118,5 @@ public class PhaseSpawner : MonoBehaviour
         }
 
         _midPhase = false;
-        _lastPhaseEnd = Time.time;
     }
 }
