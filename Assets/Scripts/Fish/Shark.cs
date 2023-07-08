@@ -20,9 +20,9 @@ public class Shark : FishAI
         _hook = GameplayManager.Instance.player;
     }
 
-    protected override void Update()
+    protected override void FishUpdate()
     {
-        base.Update();
+        base.FishUpdate();
         if (Vector3.Angle(transform.right, _hook.transform.position - transform.position) < 65)
             transform.right = Vector3.RotateTowards(transform.right, _hook.transform.position - transform.position, _maxRotateDelta * Time.deltaTime, 1);
         rb.velocity = transform.rotation * Vector3.right * _speed;

@@ -90,5 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6dff49643bccf4992d37fc563abfe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _captureSpinSpeed: 0.5
+  _captureShrinkSpeed: 0.01
   _lapTime: 10
   _verticalAccel: -5

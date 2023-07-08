@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,9 +26,9 @@ public class Pufferfish : FishAI
     }
 
     // Update is called once per frame
-    protected override void Update()
+    protected override void FishUpdate()
     {
-        base.Update();
+        base.FishUpdate();
 
         rb.velocity = new Vector3(_horizontalSpeed, rb.velocity.y + _verticalAccel * Time.deltaTime);
     }
