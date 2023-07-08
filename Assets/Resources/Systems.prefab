@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _musicTracks:
+  - {fileID: 8300000, guid: 3bc81e41326faa94d8a0fb4c659ab636, type: 3}
   - {fileID: 8300000, guid: 813d88c545b7034469da03bd3ad659ae, type: 3}
   _mixer: {fileID: 24100000, guid: d9362b5d3e2a43546940dc686c4807cd, type: 2}
 --- !u!1 &5610361868866839880

@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: HitSfx
   m_EditorClassIdentifier: 
   sfx:
-  - {fileID: 8300000, guid: 9c46a20eaaebbf74e9187f52b6d26422, type: 3}
-  - {fileID: 8300000, guid: 4cc348d1075b39740a4c5f7cd60cc3cd, type: 3}
-  minVolume: 0
-  maxVolume: 1.38
-  minPitch: 0.53
-  maxPitch: 1.78
+  - {fileID: 8300000, guid: 60f7a75e3f9559847b15587f31b12d4e, type: 3}
+  minVolume: 1.03
+  maxVolume: 2
+  minPitch: 1.08
+  maxPitch: 1.38

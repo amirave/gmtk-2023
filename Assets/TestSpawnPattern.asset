@@ -13,13 +13,28 @@ MonoBehaviour:
   m_Name: TestSpawnPattern
   m_EditorClassIdentifier: 
   spawns:
-  - spawnMode: 2
-    school: {fileID: 919132149155446097, guid: 5f7f2ac17aff894418c07ec513861975, type: 3}
-    height: 0
-    angle: 15
+  - spawnMode: 0
+    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
+    height: -1
+    angle: 75
     delayUntilNext: 0.3
-  - spawnMode: 1
-    school: {fileID: 919132149155446097, guid: d4fd205888f233d469ddf24e73a9e94d, type: 3}
-    height: 2
+  - spawnMode: 0
+    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
+    height: -1
+    angle: 60
+    delayUntilNext: 0.3
+  - spawnMode: 0
+    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
+    height: -1
     angle: 45
+    delayUntilNext: 0.3
+  - spawnMode: 0
+    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
+    height: -1
+    angle: 30
+    delayUntilNext: 0.3
+  - spawnMode: 0
+    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
+    height: -1
+    angle: 15
     delayUntilNext: 0.3

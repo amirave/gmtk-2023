@@ -55,7 +55,7 @@ namespace DefaultNamespace
             player.OnCaptureFish.AddListener(OnPlayerDamage);
             player.OnDeath.AddListener(OnPlayerDeath);
             
-            AudioManager.Instance.PlayMusicTrack("main_theme");
+            AudioManager.Instance.PlayMusicTrack("game_theme_chill");
             
             _isPlaying = true;
         }
