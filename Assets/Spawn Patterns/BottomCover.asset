@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83f686fc43941a392c2e6aeb4f6fd7d, type: 3}
+  m_Name: BottomCover
+  m_EditorClassIdentifier: 
+  spawns:
+  - spawnMode: 0
+    school: {fileID: 4072858693000730288, guid: a2227804e37f04b4b9bb85747a07f7bf, type: 3}
+    height: -1
+    angle: 0
+    delayUntilNext: 0
+    repeatTimes: 1
+  - spawnMode: 1
+    school: {fileID: 4072858693000730288, guid: a2227804e37f04b4b9bb85747a07f7bf, type: 3}
+    height: -1
+    angle: 0
+    delayUntilNext: 0.2
+    repeatTimes: 1
+  - spawnMode: 1
+    school: {fileID: 4072858693000730288, guid: a2227804e37f04b4b9bb85747a07f7bf, type: 3}
+    height: -0.8
+    angle: 0
+    delayUntilNext: 0
+    repeatTimes: 0
+  - spawnMode: 0
+    school: {fileID: 4072858693000730288, guid: a2227804e37f04b4b9bb85747a07f7bf, type: 3}
+    height: -0.8
+    angle: 0
+    delayUntilNext: 0
+    repeatTimes: 0

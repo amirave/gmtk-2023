@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 
 public class PhaseSpawner : MonoBehaviour
 {
-    [SerializeField] private DifficultySettings _difficultySettings;
+    private DifficultySettings _difficultySettings;
     [SerializeField] private List<FishSpawnPattern> _easySpawnPatterns;
     [SerializeField] private List<FishSpawnPattern> _medSpawnPatterns;
     [SerializeField] private List<FishSpawnPattern> _hardSpawnPatterns;
@@ -31,6 +31,7 @@ public class PhaseSpawner : MonoBehaviour
 
     public void Begin()
     {
+        _difficultySettings = gs.difficulty;
         _lastPhaseEnd = Time.time;
         _active = true;
 
@@ -114,7 +115,7 @@ public class PhaseSpawner : MonoBehaviour
 
                 await UniTask.Delay(TimeSpan.FromSeconds(spawn.delayUntilNext * _difficultySettings.phaseInternalDelay.GetCurrent(_now)));
 
-                spawn.repeatTimes--;
+                repeat--;
             }
         }
 

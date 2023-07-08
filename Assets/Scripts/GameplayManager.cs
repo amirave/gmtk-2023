@@ -17,6 +17,8 @@ namespace DefaultNamespace
         
         [SerializeField] private HudMenuScreen _hudScreen;
         [SerializeField] private DeathMenuScreen _deathScreen;
+
+        [SerializeField] public DifficultySettings difficulty;
         
         private Bounds _arenaBounds;
         private Camera _mainCam;

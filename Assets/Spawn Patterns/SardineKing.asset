@@ -10,18 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f83f686fc43941a392c2e6aeb4f6fd7d, type: 3}
-  m_Name: ArcSpawnPattern
+  m_Name: SardineKing
   m_EditorClassIdentifier: 
   spawns:
   - spawnMode: 0
-    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
-    height: -1
-    angle: 60
-    delayUntilNext: 0.3
-    repeatTimes: 0
-  - spawnMode: 0
-    school: {fileID: 919667599391091765, guid: 54fdf735ca06a294b8a7b5267b91b5b3, type: 3}
-    height: 0
+    school: {fileID: 4355886819533449850, guid: 49f0c9d6dff0f3a408a8ec37b8b95d06, type: 3}
+    height: 0.4
     angle: 0
-    delayUntilNext: 0.3
-    repeatTimes: 0
+    delayUntilNext: 0
+    repeatTimes: 1
