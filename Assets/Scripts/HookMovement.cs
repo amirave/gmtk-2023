@@ -22,6 +22,8 @@ public class HookMovement : MonoBehaviour
     [SerializeField] private AnimationCurve _accelerationFactorFromDot;
     [SerializeField] private int _totalHealth = 4;
 
+    [SerializeField] private LineRenderer _ropeLine;
+
     [Header("Capture Animation")] 
     [SerializeField] private float _captureMoveSpeed = 0.1f;
     [SerializeField] private float _captureHoldDuration = 0.5f;
@@ -56,14 +58,13 @@ public class HookMovement : MonoBehaviour
         if (playerState == PlayerState.Moving)
             MovePlayer();
         
-        if ((_invincible && playerState == PlayerState.Capturing) && 
+        if ((_invincible && playerState == PlayerState.Moving) && 
                 Time.time % _blinkInterval > 0.5f * _blinkInterval)
             _spriteRenderer.color = Color.clear;
         else
             _spriteRenderer.color = Color.white;
 
-        if (Input.GetKeyDown(KeyCode.R))
-            CaptureFish(null);
+        _ropeLine.SetPositions(new[]{transform.position + Vector3.up * 0.5f, new Vector3(1.14f, 5.01f)});
     }
 
     private void MovePlayer()
@@ -78,7 +79,7 @@ public class HookMovement : MonoBehaviour
         _rb.AddForce(_goalVel, ForceMode2D.Impulse);
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    private void OnTriggerEnter2D(Collider2D col)
     {
         var fish = col.gameObject.GetComponent<FishAI>();
 
@@ -99,21 +100,27 @@ public class HookMovement : MonoBehaviour
         // TODO indicator and sfx
         AudioManager.Instance.PlayEffect("fish_hurt");
 
+        // Small wait
         await UniTask.Delay(100);
+        fish.Capture();
 
         var gm = GameplayManager.Instance;
         var origPos = transform.position;
         
+        // Start lifting the hook
         var prevTime = Time.time;
         while (transform.position.y < gm.GetArenaBounds().max.y)
         {
             var deltaTime = Time.time - prevTime;
             transform.position += Vector3.up * (_captureMoveSpeed * deltaTime);
+            fish.transform.position += Vector3.up * (_captureMoveSpeed * deltaTime);
             prevTime = Time.time;
 
             await UniTask.Yield();
         }
 
+        // Wait for consume animation then hurt player
+        fish.Consume();
         await UniTask.Delay(1000 * (int)_captureHoldDuration);
         _currentHealth -= 1;
         OnCaptureFish.Invoke(_currentHealth);
@@ -124,6 +131,7 @@ public class HookMovement : MonoBehaviour
             return;
         }
 
+        // Cast back
         prevTime = Time.time;
         while (transform.position.y > origPos.y)
         {
@@ -134,6 +142,7 @@ public class HookMovement : MonoBehaviour
             await UniTask.Yield();
         }
 
+        // Give and then remove invincibility
         playerState = PlayerState.Moving;
         _invincible = true;
         await UniTask.Delay(1000 * (int)_invincibilityTime);

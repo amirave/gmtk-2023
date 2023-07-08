@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +13,8 @@ public class Pufferfish : FishAI
     private float _horizontalSpeed;
     private float _length;
 
+    private Vector3 velocity;
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -25,17 +27,18 @@ public class Pufferfish : FishAI
     }
 
     // Update is called once per frame
-    protected override void Update()
+    protected override void FishUpdate()
     {
-        base.Update();
+        base.FishUpdate();
 
-        rb.velocity = new Vector3(_horizontalSpeed, rb.velocity.y + _verticalAccel * Time.deltaTime);
+        velocity = new Vector2(_horizontalSpeed, velocity.y + _verticalAccel * Time.deltaTime);
+        transform.position += velocity * Time.deltaTime;
     }
 
     protected override void OnHitFloor()
     {
-        if (rb.velocity.y < 0)
-            rb.velocity = new Vector3(_horizontalSpeed, -rb.velocity.y);
+        if (velocity.y < 0)
+            velocity = new Vector2(velocity.x, -velocity.y);
     }
 
     protected override void OnHitRightSide()

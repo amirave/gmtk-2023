@@ -1,6 +1,7 @@
 using DefaultNamespace;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
@@ -8,6 +9,16 @@ namespace Fish
 {
     public class FishAI : MonoBehaviour
     {
+        public enum FishState
+        {
+            Moving,
+            Captured
+        }
+
+        [Header("Animation")] 
+        [SerializeField] private float _captureDuration = 2f;
+        [SerializeField] private float _captureShrinkSpins = 2f;
+        
         protected Rigidbody2D rb;
         protected SpriteRenderer sr;
 
@@ -17,6 +28,8 @@ namespace Fish
         protected float _floor;
         protected float _rightSide;
         protected float _leftSide;
+
+        protected FishState _state;
 
         private void Awake()
         {
@@ -34,7 +47,15 @@ namespace Fish
             _rightSide = GameplayManager.Instance.GetArenaBounds().max.x;
         }
 
-        protected virtual void Update()
+        private void Update()
+        {
+            if (_state == FishState.Captured)
+                return;
+            
+            FishUpdate();
+        }
+        
+        protected virtual void FishUpdate()
         {
             if (Mathf.Abs(transform.rotation.eulerAngles.z) >= 90 && Mathf.Abs(transform.rotation.eulerAngles.z) <= 270)
                 sr.flipY = true;
@@ -61,6 +82,28 @@ namespace Fish
 
         protected virtual void OnHitRightSide() { }
 
-        public void Consume() { }
+        public void Capture()
+        {
+            _state = FishState.Captured;
+        }
+        
+        public async UniTask Consume()
+        {
+            var startTime = Time.time;
+            var endTime = startTime + _captureDuration;
+            var startRot = transform.rotation.eulerAngles.z;
+            
+            while (Time.time < endTime)
+            {
+                var t = Mathf.InverseLerp(startTime, endTime, Time.time);
+                transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
+                transform.rotation *= Quaternion.AngleAxis(Mathf.Lerp(startRot, startRot + _captureShrinkSpins, t), Vector3.forward);
+
+                print("h");
+                await UniTask.Yield();
+            }
+            
+            Destroy(gameObject);
+        }
     }
 }
