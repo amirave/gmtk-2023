@@ -9,7 +9,7 @@ namespace Fish
     {
         [SerializeField] public List<FishSpawn> spawns;
 
-        public float GetTotalTime()
+        public float GetTotalTime() // TODO: make it work with repeated patterns
         {
             return spawns.Sum(s => s.delayUntilNext);
         }

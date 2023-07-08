@@ -25,6 +25,6 @@ public class Shark : FishAI
         base.FishUpdate();
         if (Vector3.Angle(transform.right, _hook.transform.position - transform.position) < 65)
             transform.right = Vector3.RotateTowards(transform.right, _hook.transform.position - transform.position, _maxRotateDelta * Time.deltaTime, 1);
-        rb.velocity = transform.rotation * Vector3.right * _speed;
+        transform.position = transform.position + transform.rotation * Vector3.right * _speed * Time.deltaTime;
     }
 }

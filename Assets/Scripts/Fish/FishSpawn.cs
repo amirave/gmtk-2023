@@ -11,5 +11,6 @@ namespace Fish
         public float height;
         public float angle;
         public float delayUntilNext;
+        public int repeatTimes = 1;
     }
 }

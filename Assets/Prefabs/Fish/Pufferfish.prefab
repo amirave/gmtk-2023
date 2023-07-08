@@ -95,8 +95,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pufferfish
       objectReference: {fileID: 0}
+    - target: {fileID: 7039422840044936277, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Size.x
+      value: 1.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039422840044936277, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Size.y
+      value: 1.187111
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039422840044936277, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.04596996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039422840044936277, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.05107772
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 448129743781949391, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
 --- !u!1 &919667599391091765 stripped
 GameObject:
@@ -115,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c6dff49643bccf4992d37fc563abfe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _captureSpinSpeed: 0.5
-  _captureShrinkSpeed: 0.01
+  _captureDuration: 2
+  _captureShrinkSpins: 2
   _lapTime: 10
   _verticalAccel: -5

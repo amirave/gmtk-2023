@@ -5,12 +5,17 @@ using Fish;
 
 public class Sardine : FishAI
 {
-    [SerializeField] private float speed;
+    [SerializeField] private float _speed;
 
     protected override void Start()
     {
         base.Start();
+    }
 
-        rb.velocity = transform.rotation * Vector3.right * speed;
+    protected override void FishUpdate()
+    {
+        base.FishUpdate();
+
+        transform.position = transform.position + transform.rotation * Vector3.right * _speed * Time.deltaTime;
     }
 }

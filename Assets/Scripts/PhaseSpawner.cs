@@ -86,29 +86,34 @@ public class PhaseSpawner : MonoBehaviour
         
         foreach (var spawn in pattern.spawns)
         {
-            if (_active == false)
-                return;
-            
-            var spawnRight = Random.value > 0.5f;
-
-            var normalizedDir = spawn.spawnMode switch
+            while (spawn.repeatTimes > 0)
             {
-                FishSpawnMode.Left => -1,
-                FishSpawnMode.Right => 1,
-                FishSpawnMode.UniformRandom => uniformSpawnRight ? 1 : -1,
-                _ => spawnRight ? 1 : -1
-            };
+                if (_active == false)
+                    return;
 
-            var spawnPos = new Vector3(normalizedDir * 1.2f, spawn.height);
-            spawnPos.Scale(gs.GetArenaBounds().extents);
-            spawnPos += gs.GetArenaBounds().center;
+                var spawnRight = Random.value > 0.5f;
 
-            var correctedAngle = normalizedDir * spawn.angle + (normalizedDir == 1 ? 180 : 0);
-            var rot = Quaternion.AngleAxis(correctedAngle, Vector3.forward);
-            
-            Instantiate(spawn.school, spawnPos, rot, transform);
+                var normalizedDir = spawn.spawnMode switch
+                {
+                    FishSpawnMode.Left => -1,
+                    FishSpawnMode.Right => 1,
+                    FishSpawnMode.UniformRandom => uniformSpawnRight ? 1 : -1,
+                    _ => spawnRight ? 1 : -1
+                };
 
-            await UniTask.Delay(TimeSpan.FromSeconds(spawn.delayUntilNext * _difficultySettings.phaseInternalDelay.GetCurrent(_now)));
+                var spawnPos = new Vector3(normalizedDir * 1.2f, spawn.height);
+                spawnPos.Scale(gs.GetArenaBounds().extents);
+                spawnPos += gs.GetArenaBounds().center;
+
+                var correctedAngle = -normalizedDir * spawn.angle + (normalizedDir == 1 ? 180 : 0);
+                var rot = Quaternion.AngleAxis(correctedAngle, Vector3.forward);
+
+                Instantiate(spawn.school, spawnPos, rot, transform);
+
+                await UniTask.Delay(TimeSpan.FromSeconds(spawn.delayUntilNext * _difficultySettings.phaseInternalDelay.GetCurrent(_now)));
+
+                spawn.repeatTimes--;
+            }
         }
 
         _midPhase = false;

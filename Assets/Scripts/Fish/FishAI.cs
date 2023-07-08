@@ -19,7 +19,6 @@ namespace Fish
         [SerializeField] private float _captureDuration = 2f;
         [SerializeField] private float _captureShrinkSpins = 2f;
         
-        protected Rigidbody2D rb;
         protected SpriteRenderer sr;
 
         protected Vector3 initialPos;
@@ -33,7 +32,6 @@ namespace Fish
 
         private void Awake()
         {
-            rb = GetComponent<Rigidbody2D>();
             sr = GetComponent<SpriteRenderer>();
 
             initialPos = transform.position;

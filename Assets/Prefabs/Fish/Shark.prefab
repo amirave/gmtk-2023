@@ -99,6 +99,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shark
       objectReference: {fileID: 0}
+    - target: {fileID: 7039422840044936277, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Size.x
+      value: 4.967446
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039422840044936277, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Size.y
+      value: 1.155038
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039422840044936277, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.8613618
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039422840044936277, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.2307256
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
 --- !u!1 &6311160677611938346 stripped
@@ -118,5 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01543a308643143459558ca71a280161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _captureDuration: 2
+  _captureShrinkSpins: 2
   _speed: 1.5
   _maxRotateDelta: 1
