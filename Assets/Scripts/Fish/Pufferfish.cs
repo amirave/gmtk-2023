@@ -8,7 +8,6 @@ using DefaultNamespace;
 public class Pufferfish : FishAI
 {
     [SerializeField] private float _lapTime;
-
     [SerializeField] private float _verticalAccel;
 
     private float _horizontalSpeed;
