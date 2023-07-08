@@ -10,10 +10,12 @@ namespace DefaultNamespace
 
         [SerializeField] private float _topMargin;
         [SerializeField] private MenuScreen _hudScreen;
+        [SerializeField] private float _scorePerSecond = 100;
         
         private Bounds _arenaBounds;
         private Camera _mainCam;
         private PhaseSpawner _phaseSpawner;
+        private float _score;
         
         void Awake()
         {
@@ -30,6 +32,8 @@ namespace DefaultNamespace
                 new Vector2(worldWidth, worldHeight - _topMargin));
 
             _phaseSpawner = GetComponentInChildren<PhaseSpawner>();
+
+            Time.timeScale = 1;
         }
 
         void Start()
@@ -39,7 +43,7 @@ namespace DefaultNamespace
 
         private void Update()
         {
-            
+            AddScore(Time.deltaTime * _scorePerSecond);
         }
 
         private void OnDrawGizmos()
@@ -63,6 +67,12 @@ namespace DefaultNamespace
         public Bounds GetArenaBounds()
         {
             return _arenaBounds;
+        }
+        
+        public void AddScore(float amount)
+        {
+            _score += amount;
+            _hudScreen.SetTextReplacement("score", ((int)_score).ToString().PadLeft(6, '0'));
         }
     }
 }
