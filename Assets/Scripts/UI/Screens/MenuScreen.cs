@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace UI.Screens
 {
-    public abstract class MenuScreen : MonoBehaviour
+    public class MenuScreen : MonoBehaviour
     {
         public Dictionary<string, string> textReplacements;
         public UnityEvent<string> OnButtonClick;

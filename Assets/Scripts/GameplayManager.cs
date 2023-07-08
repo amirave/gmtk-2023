@@ -1,4 +1,5 @@
 ﻿using System;
+using UI.Screens;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -8,6 +9,7 @@ namespace DefaultNamespace
         public static GameplayManager Instance { get; private set; }
 
         [SerializeField] private float _topMargin;
+        [SerializeField] private MenuScreen _hudScreen;
         
         private Bounds _arenaBounds;
         private Camera _mainCam;
@@ -51,6 +53,11 @@ namespace DefaultNamespace
                 
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(_arenaBounds.center, _arenaBounds.extents * 2);
+        }
+
+        private void OnDestroy()
+        {
+            Instance = null;
         }
 
         public Bounds GetArenaBounds()
