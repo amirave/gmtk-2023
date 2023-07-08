@@ -97,7 +97,6 @@ namespace Fish
                 transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
                 transform.rotation *= Quaternion.AngleAxis(Mathf.Lerp(startRot, startRot + _captureShrinkSpins, t), Vector3.forward);
 
-                print("h");
                 await UniTask.Yield();
             }
             

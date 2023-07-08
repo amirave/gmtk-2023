@@ -1458,7 +1458,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _difficultySettings: {fileID: 11400000, guid: 80bd1b199f691c74fbef0747b8c239e6, type: 2}
   _easySpawnPatterns:
+  - {fileID: 11400000, guid: 217f22efa09dfd54cb37ee6ab189e00b, type: 2}
   - {fileID: 11400000, guid: 755c6ef9b24d26246ae2c478a2f9da25, type: 2}
+  - {fileID: 11400000, guid: a06429a132fdc9e43af1f0d071684f0e, type: 2}
+  - {fileID: 11400000, guid: 86177db3d6dea4642b145f9994619cc7, type: 2}
   _medSpawnPatterns: []
   _hardSpawnPatterns: []
 --- !u!1 &742810295

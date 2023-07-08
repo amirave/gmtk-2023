@@ -97,11 +97,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7039422840044936277, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
       propertyPath: m_Size.x
-      value: 1.13
+      value: 1.0652373
       objectReference: {fileID: 0}
     - target: {fileID: 7039422840044936277, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
       propertyPath: m_Size.y
-      value: 1.187111
+      value: 0.99733686
       objectReference: {fileID: 0}
     - target: {fileID: 7039422840044936277, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
       propertyPath: m_Offset.x
@@ -110,6 +110,10 @@ PrefabInstance:
     - target: {fileID: 7039422840044936277, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
       propertyPath: m_Offset.y
       value: -0.05107772
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039422840044936277, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
+      propertyPath: m_Direction
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -135,3 +139,5 @@ MonoBehaviour:
   _captureShrinkSpins: 2
   _lapTime: 10
   _verticalAccel: -5
+  _rotationSpeed: 0
+  _bouncesTillLeave: 2

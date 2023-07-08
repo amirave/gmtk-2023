@@ -21,7 +21,7 @@ public class PhaseSpawner : MonoBehaviour
     private float _timeBetweenObstacles = 1f;
 
     private bool _active = false;
-    private float _lastPhaseEnd = 0;
+    private float _lastPhaseStart = 0;
     private bool _midPhase = false;
     private float _obstacleHeight;
     
@@ -31,7 +31,7 @@ public class PhaseSpawner : MonoBehaviour
 
     public void Begin()
     {
-        _lastPhaseEnd = Time.time;
+        _lastPhaseStart = Time.time;
         _active = true;
 
         _now = 0;
@@ -46,15 +46,14 @@ public class PhaseSpawner : MonoBehaviour
     {
         if (_active == false)
             return;
-        
-        _obstaclePerPhase = 0; //(int) gs.difficultySettings.obstaclesPerPhase.GetCurrent(gs.GetTime());
-        _timeBetweenObstacles = 0; //gs.difficultySettings.timeBetweenObstacles.GetCurrent(gs.GetTime());
-        _timeBetweenPhases = 0; //gs.difficultySettings.timeBetweenPhases.GetCurrent(gs.GetTime());
 
         _timeBetweenPhases = 1/_difficultySettings.phaseRate.GetCurrent(_now);
 
-        if (!_midPhase && Time.time - _lastPhaseEnd >= _timeBetweenPhases)
+        if (Time.time - _lastPhaseStart >= _timeBetweenPhases)
+        {
+            _lastPhaseStart = Time.time;
             StartPhase(GetRandomSpawnPattern());
+        }
 
         _now += Time.deltaTime;
     }
@@ -114,11 +113,10 @@ public class PhaseSpawner : MonoBehaviour
 
                 await UniTask.Delay(TimeSpan.FromSeconds(spawn.delayUntilNext * _difficultySettings.phaseInternalDelay.GetCurrent(_now)));
 
-                spawn.repeatTimes--;
+                repeat--;
             }
         }
 
         _midPhase = false;
-        _lastPhaseEnd = Time.time;
     }
 }
