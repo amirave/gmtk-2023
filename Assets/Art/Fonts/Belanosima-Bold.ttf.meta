@@ -1,16 +1,17 @@
 fileFormatVersion: 2
-guid: bf3086842fee8864cb5c8947c68d79ea
+guid: 48a9c9aafc5750f44ae6e8f80a99a0f5
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 11
+  fontSize: 16
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Retro Gaming
-  fallbackFontReferences: []
+  - Belanosima
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 26f8c7785cb3fed469ae24c802ef1111, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

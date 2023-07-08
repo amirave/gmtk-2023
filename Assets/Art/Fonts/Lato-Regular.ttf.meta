@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6ce160c7f6a77bc44833f35b3d948d8c
+guid: 0367040aab995a44299b9a822ab4bd83
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Upheaval TT (BRK)
+  - Lato
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

@@ -5,6 +5,7 @@ using System.Linq;
 using Cysharp.Threading.Tasks;
 using DefaultNamespace;
 using Fish;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -58,6 +59,9 @@ public class PhaseSpawner : MonoBehaviour
         
         foreach (var spawn in pattern.spawns)
         {
+            if (_active == false)
+                return;
+            
             var spawnRight = Random.value > 0.5f;
 
             var normalizedDir = spawn.spawnMode switch

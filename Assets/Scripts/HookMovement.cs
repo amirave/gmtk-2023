@@ -13,7 +13,8 @@ public class HookMovement : MonoBehaviour
     public enum PlayerState
     {
         Moving,
-        Capturing
+        Capturing,
+        Dead
     }
     
     [SerializeField] private float _maxSpeed;
@@ -37,6 +38,7 @@ public class HookMovement : MonoBehaviour
     [HideInInspector] public PlayerState playerState = PlayerState.Moving;
 
     [HideInInspector] public UnityEvent<int> OnCaptureFish;
+    [HideInInspector] public UnityEvent OnDeath;
 
     private void Awake()
     {
@@ -59,7 +61,9 @@ public class HookMovement : MonoBehaviour
             _spriteRenderer.color = Color.clear;
         else
             _spriteRenderer.color = Color.white;
-        
+
+        if (Input.GetKeyDown(KeyCode.R))
+            CaptureFish(null);
     }
 
     private void MovePlayer()
@@ -113,7 +117,13 @@ public class HookMovement : MonoBehaviour
         await UniTask.Delay(1000 * (int)_captureHoldDuration);
         _currentHealth -= 1;
         OnCaptureFish.Invoke(_currentHealth);
-        
+        if (_currentHealth == 0)
+        {
+            OnDeath.Invoke();
+            playerState = PlayerState.Dead;
+            return;
+        }
+
         prevTime = Time.time;
         while (transform.position.y > origPos.y)
         {

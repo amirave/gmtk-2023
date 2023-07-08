@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: c0b6cfea03fd8504fbd20d0eeee8877e
+guid: 6c1c93f5c9e7fb64a98df88f657408e7
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 8
-  forceTextureCase: 0
+  fontSize: 16
+  forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - 8BIT WONDER
+  - BLOMBERG
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 2
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1
