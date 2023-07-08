@@ -86,7 +86,9 @@ public class PhaseSpawner : MonoBehaviour
         
         foreach (var spawn in pattern.spawns)
         {
-            while (spawn.repeatTimes > 0)
+            if (spawn.repeatTimes < 1) spawn.repeatTimes = 1;
+            int repeat = spawn.repeatTimes;
+            while (repeat > 0)
             {
                 if (_active == false)
                     return;
