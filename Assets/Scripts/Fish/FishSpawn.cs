@@ -7,7 +7,7 @@ namespace Fish
     public class FishSpawn
     {
         public FishSpawnMode spawnMode;
-        public GameObject school;
+        public FishSchool school;
         public float height;
         public float angle;
         public float delayUntilNext;
