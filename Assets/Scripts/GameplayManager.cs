@@ -1,4 +1,5 @@
 ﻿using System;
+using Audio;
 using UI.Screens;
 using UnityEngine;
 using Managers;
@@ -53,6 +54,8 @@ namespace DefaultNamespace
 
             player.OnCaptureFish.AddListener(OnPlayerDamage);
             player.OnDeath.AddListener(OnPlayerDeath);
+            
+            AudioManager.Instance.PlayMusicTrack("main_theme");
             
             _isPlaying = true;
         }
