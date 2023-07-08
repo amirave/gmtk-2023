@@ -61,16 +61,22 @@ public class PhaseSpawner : MonoBehaviour
 
     private FishSpawnPattern GetRandomSpawnPattern()
     {
-        int patternDifficulty = (int)(_difficultySettings.phaseDifficulty.GetCurrent(_now) * _spawnPatterns.Count);
-        var _pattern = patternDifficulty switch
-        {
-            0 => _easySpawnPatterns,
-            1 => _medSpawnPatterns,
-            2 => _hardSpawnPatterns,
-            _ => _easySpawnPatterns
-        };
+        int patternDifficulty = (int)(_difficultySettings.phaseDifficulty.GetCurrent(_now) * 3);
+        int totalLength = _easySpawnPatterns.Count;
+        if (patternDifficulty > 0)
+            totalLength += _medSpawnPatterns.Count;
+        if (patternDifficulty > 1)
+            totalLength += _hardSpawnPatterns.Count;
 
-        return _pattern.PickRandom();
+        int i = Random.Range(0, totalLength);
+
+        if (i < _easySpawnPatterns.Count)
+            return _easySpawnPatterns[i];
+        i -= _easySpawnPatterns.Count;
+        if (i < _medSpawnPatterns.Count)
+            return _medSpawnPatterns[i];
+        i -= _medSpawnPatterns.Count;
+        return _hardSpawnPatterns[i];
     }
 
     private async void StartPhase(FishSpawnPattern pattern)
@@ -97,7 +103,7 @@ public class PhaseSpawner : MonoBehaviour
             spawnPos.Scale(gs.GetArenaBounds().extents);
             spawnPos += gs.GetArenaBounds().center;
 
-            var correctedAngle = normalizedDir * spawn.angle + (normalizedDir == -1 ? 180 : 0);
+            var correctedAngle = normalizedDir * spawn.angle + (normalizedDir == 1 ? 180 : 0);
             var rot = Quaternion.AngleAxis(correctedAngle, Vector3.forward);
             
             Instantiate(spawn.school, spawnPos, rot, transform);
