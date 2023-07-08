@@ -16,7 +16,8 @@ namespace UI.Screens
         private void Awake()
         {
             _textObjects = GetComponentsInChildren<CustomText>(true).ToList();
-            
+            textReplacements = new();
+
             var buttons = GetComponentsInChildren<CustomButton>(true);
             foreach (var button in buttons)
             {
