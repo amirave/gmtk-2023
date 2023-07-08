@@ -11,6 +11,7 @@ namespace DefaultNamespace
         [SerializeField] private float _topMargin;
         [SerializeField] private MenuScreen _hudScreen;
         [SerializeField] private float _scorePerSecond = 100;
+        [SerializeField] public HookMovement player;
         
         private Bounds _arenaBounds;
         private Camera _mainCam;
