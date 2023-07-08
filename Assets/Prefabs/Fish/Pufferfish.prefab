@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &597297999628780013
+--- !u!1001 &5988917380211904498
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -53,42 +53,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6795482839387109414, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
       propertyPath: m_Size.x
-      value: 8.42
+      value: 4.07
       objectReference: {fileID: 0}
     - target: {fileID: 6795482839387109414, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
       propertyPath: m_Size.y
-      value: 5.95
+      value: 4.07
       objectReference: {fileID: 0}
     - target: {fileID: 6795482839387109414, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 61e8c70219055f3478e05a6c426f48c2, type: 3}
+      objectReference: {fileID: 21300000, guid: eca5cb83290c6e6478fc4221c971e3bc, type: 3}
     - target: {fileID: 6795482839387109414, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6908443142196159431, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
       propertyPath: m_Name
-      value: Shark
+      value: Pufferfish
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
---- !u!1 &6311160677611938346 stripped
+--- !u!1 &919667599391091765 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6908443142196159431, guid: 2c20c8dab3c3e9046ba38d7c8da54a2e, type: 3}
-  m_PrefabInstance: {fileID: 597297999628780013}
+  m_PrefabInstance: {fileID: 5988917380211904498}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1595762495388681200
+--- !u!114 &190921601438362734
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6311160677611938346}
+  m_GameObject: {fileID: 919667599391091765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01543a308643143459558ca71a280161, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c6dff49643bccf4992d37fc563abfe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1.5
-  _maxRotateDelta: 1
+  _lapTime: 10
+  _verticalAccel: -5
