@@ -5,7 +5,6 @@ using Audio;
 using Cysharp.Threading.Tasks;
 using DefaultNamespace;
 using Fish;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,10 +22,13 @@ public class HookMovement : MonoBehaviour
     [SerializeField] private float _acceleration;
     [SerializeField] private AnimationCurve _accelerationFactorFromDot;
     [SerializeField] private int _totalHealth = 4;
+    
+    [Header("Dodge Roll")]
     [SerializeField] private float _dodgeRollTime;
     [SerializeField] private AnimationCurve _dodgeRollAccelerationCurve;
     [SerializeField] private float _dodgeRollAccelerationMultiplier;
     [SerializeField] private float _dodgeRollCooldown;
+    [SerializeField] private float _gracePeriod;
 
     [SerializeField] private LineRenderer _ropeLine;
 
@@ -41,6 +43,7 @@ public class HookMovement : MonoBehaviour
     private int _currentHealth;
     private float _lastDodgeRollTime = 0;
     private bool _canDodgeRoll = true;
+    public float _idleTime;
     
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
@@ -127,7 +130,12 @@ public class HookMovement : MonoBehaviour
     {
         var input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         var move = Vector2.ClampMagnitude(input, 1);
-        
+
+        if (move == Vector2.zero)
+            _idleTime += Time.deltaTime;
+        else
+            _idleTime = 0;
+
         var goalVel = move * _maxSpeed;
         var acceleration = _acceleration * _accelerationFactorFromDot.Evaluate(Vector2.Dot(move, _goalVel.normalized));
         
@@ -142,7 +150,7 @@ public class HookMovement : MonoBehaviour
         if (fish == null)
             return;
 
-        if (_invincible)
+        if (_invincible || playerState != PlayerState.Moving)
             return;
 
         CaptureFish(fish);
@@ -157,8 +165,8 @@ public class HookMovement : MonoBehaviour
         AudioManager.Instance.PlayEffect("fish_hurt");
 
         // Small wait
-        await UniTask.Delay(100);
         fish.Capture();
+        await UniTask.Delay(100);
 
         var gm = GameManager.Instance;
         var origPos = transform.position;
@@ -181,7 +189,7 @@ public class HookMovement : MonoBehaviour
 
         // Wait for consume animation then hurt player
         fish.Consume();
-        await UniTask.Delay(1000 * (int)_captureHoldDuration);
+        await UniTask.Delay((int)(1000 * _captureHoldDuration));
         _currentHealth -= 1;
         OnCaptureFish.Invoke(_currentHealth);
         if (_currentHealth == 0)
@@ -205,7 +213,7 @@ public class HookMovement : MonoBehaviour
         // Give and then remove invincibility
         playerState = PlayerState.Moving;
         _invincible = true;
-        await UniTask.Delay(1000 * (int)_invincibilityTime);
+        await UniTask.Delay((int)(1000 * _invincibilityTime));
         _invincible = false;
     }
 
@@ -225,9 +233,11 @@ public class HookMovement : MonoBehaviour
             await UniTask.Yield();
         }
 
-        _invincible = false;
         transform.rotation = startRotation;
         playerState = PlayerState.Moving;
+        
+        await UniTask.Delay((int)(1000 * _gracePeriod));
+        _invincible = false;
     }
 
     private async void Flash()

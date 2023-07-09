@@ -1,8 +1,10 @@
+using System;
 using DefaultNamespace;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using Cysharp.Threading.Tasks;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
@@ -14,7 +16,7 @@ namespace Fish
         {
             Moving,
             Captured,
-            Returning
+            Returning,
         }
 
         [Header("Animation")] 
@@ -29,6 +31,7 @@ namespace Fish
         protected float _floor;
         protected float _rightSide;
         protected float _leftSide;
+        protected bool _enteredScreen;
 
         protected FishState _state;
 
@@ -129,6 +132,17 @@ namespace Fish
             }
             
             Destroy(gameObject);
+        }
+
+        private void OnBecameVisible()
+        {
+            _enteredScreen = true;
+        }
+
+        private void OnBecameInvisible()
+        {
+            if (_enteredScreen)
+                Destroy(gameObject);
         }
     }
 }

@@ -9,6 +9,7 @@ public class DifficultySettings : ScriptableObject
 {
     public Difficulty phaseDifficulty;
     public Difficulty phaseRate;
+    public Difficulty maxFishAllowed;
     public Difficulty phaseInternalDelay;
     public Difficulty fishSpeed;
     public Difficulty pufferRate;

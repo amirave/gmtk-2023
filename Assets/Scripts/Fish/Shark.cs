@@ -31,6 +31,8 @@ public class Shark : FishAI
 
         if (Vector3.Angle(dir, _hook.transform.position - transform.position) < 25)
             transform.right = Vector3.RotateTowards(transform.right, _hook.transform.position - transform.position, _maxRotateDelta * Time.deltaTime, 1);
+        else
+            transform.right = Vector3.RotateTowards(transform.right, dir, _maxRotateDelta * Time.deltaTime, 1);
         
         transform.position += transform.right * (_speed * Time.deltaTime);
     }

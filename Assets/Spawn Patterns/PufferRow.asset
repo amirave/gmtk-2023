@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PufferRow
   m_EditorClassIdentifier: 
   spawns:
-  - spawnMode: 3
+  - spawnMode: 0
     school: {fileID: 919667599391091765, guid: 54fdf735ca06a294b8a7b5267b91b5b3, type: 3}
     height: -0.5
     angle: 0

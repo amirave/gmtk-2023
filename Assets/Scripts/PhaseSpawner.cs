@@ -64,6 +64,15 @@ public class PhaseSpawner : MonoBehaviour
             _lastSharkSent = Time.time;
             SendFish(_sharkSpawn);
         }
+        else if (GameManager.Instance.player._idleTime > 5f)
+        {
+            _lastSharkSent = Time.time;
+            SendFish(_sharkSpawn);
+            GameManager.Instance.player._idleTime = 0;
+        }
+
+        if (FindObjectsOfType<FishAI>().Length > _difficultySettings.maxFishAllowed.GetCurrent(_now))
+            return;
 
         if (Time.time - _lastPhaseStart >= _timeBetweenPhases)
         {
@@ -107,15 +116,12 @@ public class PhaseSpawner : MonoBehaviour
             {
                 if (_active == false)
                     return;
-
-                var spawnRight = Random.value > 0.5f;
-
+                
                 var normalizedDir = spawn.spawnMode switch
                 {
-                    FishSpawnMode.Left => -1,
-                    FishSpawnMode.Right => 1,
-                    FishSpawnMode.UniformRandom => uniformSpawnRight ? 1 : -1,
-                    _ => spawnRight ? 1 : -1
+                    FishSpawnMode.Left => uniformSpawnRight ? 1 : -1,
+                    FishSpawnMode.Right => uniformSpawnRight ? -1 : 1,
+                    FishSpawnMode.Random => Random.value > 0.5f ? -1 : 1
                 };
 
                 var spawnPos = new Vector3(normalizedDir * 1.2f, spawn.height);
@@ -138,7 +144,7 @@ public class PhaseSpawner : MonoBehaviour
 
     private void SendFish(GameObject gameObject)
     {
-        float height = Random.value * 1.6f - 0.8f;
+        float height = Mathf.Lerp(0, 0.8f, Random.value);
         float direction = Random.value > 0.5f ? 1 : -1;
         Vector3 spawnPos = new Vector3(direction * 1.2f, height);
         spawnPos.Scale(gm.GetArenaBounds().extents);
