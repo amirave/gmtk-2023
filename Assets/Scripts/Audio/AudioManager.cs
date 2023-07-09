@@ -158,7 +158,7 @@ namespace Audio
             return src;
         }
 
-        private void ToggleChannelInternal(AudioChannel channel, float value, bool writeToProfile)
+        public void ToggleChannelInternal(AudioChannel channel, float value, bool writeToProfile)
         {
             var paramName = channel == AudioChannel.Fx
                 ? AudioNames.MIXER_PARAM_VOLUME_SFX

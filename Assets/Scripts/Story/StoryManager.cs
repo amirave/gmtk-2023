@@ -1,4 +1,5 @@
 ﻿using System;
+using Audio;
 using Cysharp.Threading.Tasks;
 using Managers;
 using UnityEngine;
@@ -23,6 +24,7 @@ namespace Story
         private void Awake()
         {
             NextText();
+            AudioManager.Instance.PlayMusicTrack("cutscene_music");
         }
 
         private void Update()

@@ -117,12 +117,13 @@ namespace Fish
             var startTime = Time.time;
             var endTime = startTime + _captureDuration;
             var startRot = transform.rotation.eulerAngles.z;
+            var startSize = transform.localScale;
             
             while (Time.time < endTime)
             {
                 var t = Mathf.InverseLerp(startTime, endTime, Time.time);
-                transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, t);
-                transform.rotation *= Quaternion.AngleAxis(Mathf.Lerp(startRot, startRot + _captureShrinkSpins, t), Vector3.forward);
+                transform.localScale = Vector3.Lerp(startSize, Vector3.zero, t);
+                transform.rotation = Quaternion.AngleAxis(Mathf.Lerp(startRot, startRot + 360 * _captureShrinkSpins, t), Vector3.forward);
 
                 await UniTask.Yield();
             }

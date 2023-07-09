@@ -146,7 +146,11 @@ public class HookMovement : MonoBehaviour
         {
             var deltaTime = Time.time - prevTime;
             transform.position += Vector3.up * (_captureMoveSpeed * deltaTime);
+
+            fish.transform.position = Vector3.MoveTowards(fish.transform.position,
+                GetComponent<Collider2D>().bounds.center, 1f * deltaTime);
             fish.transform.position += Vector3.up * (_captureMoveSpeed * deltaTime);
+
             prevTime = Time.time;
 
             await UniTask.Yield();
