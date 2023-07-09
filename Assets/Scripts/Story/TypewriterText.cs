@@ -38,17 +38,18 @@ namespace Story
             _isTyping = true;
             _uiText.text = "";
             
-            foreach (var c in newText) 
-            {
-                _uiText.text += c;
-                await UniTask.Delay(1000 * (int)_charDelay, cancellationToken: token);
-                if (token.IsCancellationRequested)
-                {
-                    _isTyping = false;
-                    _uiText.text = newText;
-                    return;
-                }
-            }
+            // foreach (var c in newText) 
+            // {
+            //     _uiText.text += c;
+            //     await UniTask.Delay(1000 * (int)_charDelay, cancellationToken: token);
+            //     if (token.IsCancellationRequested)
+            //     {
+            //         _isTyping = false;
+            //         _uiText.text = newText;
+            //         return;
+            //     }
+            // }
+            _uiText.text = newText;
 
             _isTyping = false;
             _uiText.text = newText;

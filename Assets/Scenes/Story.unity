@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c142201c5a421abf81598a31c98314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _charDelay: 0.125
+  _charDelay: 0.01
 --- !u!114 &832221893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,7 +663,7 @@ MonoBehaviour:
     dialogLines:
     - oh, by the way, we got some fishing gear on the way here
     - it's gonna be the best fishing trip ever man
-    - i just hope your not one of them pesky vegans amirite? haha
+    - i just hope you're not one of them pesky vegans amirite? haha
   - animSprites:
     - {fileID: 21300000, guid: 2c219fc0bd9008d4d8aceb2208acd44f, type: 3}
     animSpeed: 0.5
