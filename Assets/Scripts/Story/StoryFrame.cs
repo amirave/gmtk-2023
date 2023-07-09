@@ -8,6 +8,7 @@ namespace Story
     {
         public Sprite[] animSprites;
         public float animSpeed;
+        public bool playOnce;
         public string[] dialogLines;
     }
 }
