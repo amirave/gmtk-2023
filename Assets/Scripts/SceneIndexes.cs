@@ -5,5 +5,6 @@ using UnityEngine;
 public static class SceneIndexes
 {
     public static readonly int MAIN_MENU = 0;
-    public static readonly int GAME = 1;
+    public static readonly int STORY = 1;
+    public static readonly int GAME = 2;
 }
