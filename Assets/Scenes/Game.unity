@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2988599a00dc934285c0da2ee9ce491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 0.1
+  _maxSpeed: 0.05
   _acceleration: 100
   _accelerationFactorFromDot:
     serializedVersion: 2
@@ -292,6 +292,42 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _totalHealth: 3
+  _dodgeRollTime: 0.25
+  _dodgeRollAccelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.008205414
+      value: 0.50216675
+      inSlope: -0.0063504656
+      outSlope: -0.0063504656
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.9850257
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.50005186
+      inSlope: -0.00531707
+      outSlope: -0.00531707
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.99502563
+      value: 0.3532231
+      inSlope: -1.0296481
+      outSlope: -1.0296481
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.06755421
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _dodgeRollAccelerationMultiplier: 20.08
+  _dodgeRollCooldown: 0
   _ropeLine: {fileID: 2001126702}
   _captureMoveSpeed: 3
   _captureHoldDuration: 1.5
@@ -324,7 +360,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 726fd20addb1db44b9f80f20245dd3b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -5,6 +5,7 @@ using Audio;
 using Cysharp.Threading.Tasks;
 using DefaultNamespace;
 using Fish;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,6 +14,7 @@ public class HookMovement : MonoBehaviour
     public enum PlayerState
     {
         Moving,
+        DodgeRolling,
         Capturing,
         Dead
     }
@@ -21,6 +23,10 @@ public class HookMovement : MonoBehaviour
     [SerializeField] private float _acceleration;
     [SerializeField] private AnimationCurve _accelerationFactorFromDot;
     [SerializeField] private int _totalHealth = 4;
+    [SerializeField] private float _dodgeRollTime;
+    [SerializeField] private AnimationCurve _dodgeRollAccelerationCurve;
+    [SerializeField] private float _dodgeRollAccelerationMultiplier;
+    [SerializeField] private float _dodgeRollCooldown;
 
     [SerializeField] private LineRenderer _ropeLine;
 
@@ -33,6 +39,8 @@ public class HookMovement : MonoBehaviour
     private Vector2 _goalVel;
     private bool _invincible;
     private int _currentHealth;
+    private float _lastDodgeRollTime = 0;
+    private bool _canDodgeRoll = true;
     
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
@@ -57,8 +65,23 @@ public class HookMovement : MonoBehaviour
     {
         if (playerState == PlayerState.Moving)
         {
-            MovePlayer();
+            if (Input.GetKeyDown(KeyCode.Space) && _canDodgeRoll)
+            {
+                _lastDodgeRollTime = Time.time;
+                DodgeRoll();
+                _canDodgeRoll = false;
+            }
+            else
+                MovePlayer();
             CheckBounds();
+        }
+        if (playerState == PlayerState.DodgeRolling)
+            CheckBounds();
+
+        if (Time.time - _lastDodgeRollTime >= _dodgeRollCooldown && !_canDodgeRoll)
+        {
+            Flash();
+            _canDodgeRoll = true;
         }
 
         if ((_invincible && playerState == PlayerState.Moving) && 
@@ -180,6 +203,55 @@ public class HookMovement : MonoBehaviour
         _invincible = true;
         await UniTask.Delay(1000 * (int)_invincibilityTime);
         _invincible = false;
+    }
+
+    private async void DodgeRoll()
+    {
+        Quaternion startRotation = transform.rotation;
+        playerState = PlayerState.DodgeRolling;
+        Vector3 direction = _rb.velocity.normalized;
+        float startTIme = Time.time;
+        _invincible = true;
+
+        while (Time.time - startTIme < _dodgeRollTime) 
+        {
+            _rb.AddForce(_rb.mass * _dodgeRollAccelerationCurve.Evaluate((Time.time - startTIme) / _dodgeRollTime) * _dodgeRollAccelerationMultiplier * direction);
+            transform.rotation *= Quaternion.AngleAxis(1, Vector3.up);
+
+            await UniTask.Yield();
+        }
+
+        _invincible = false;
+        transform.rotation = startRotation;
+        playerState = PlayerState.Moving;
+    }
+
+    private async void Flash()
+    {
+        float flashAmount = 0;
+        float elapsedTime = 0;
+
+        while (elapsedTime < 0.05)
+        {
+            elapsedTime += Time.deltaTime;
+
+            flashAmount = Mathf.Lerp(0, 1, elapsedTime / 0.05f);
+
+            _spriteRenderer.material.SetFloat("_FlashAmount", flashAmount);
+
+            await UniTask.Yield();
+        }
+
+        while (elapsedTime < 0.1)
+        {
+            elapsedTime += Time.deltaTime;
+
+            flashAmount = Mathf.Lerp(1, 0, (elapsedTime - 0.05f) / 0.05f);
+
+            _spriteRenderer.material.SetFloat("_FlashAmount", flashAmount);
+
+            await UniTask.Yield();
+        }
     }
 
     public int GetTotalHealth()
