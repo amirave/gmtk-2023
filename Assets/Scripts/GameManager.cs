@@ -120,6 +120,7 @@ namespace DefaultNamespace
             _deathScreen.SubscribeToButton("retry", () => LifetimeManager.Instance.LoadScene(SceneIndexes.GAME));
             _deathScreen.SubscribeToButton("main_menu", () => LifetimeManager.Instance.LoadScene(SceneIndexes.MAIN_MENU));
 
+            print(_score + ", " + ((int)_score).ToString());
             _deathScreen.SetTextReplacement("score", ((int)_score).ToString());
         }
 

@@ -80,6 +80,7 @@ public class HookMovement : MonoBehaviour
                 MovePlayer();
             CheckBounds();
         }
+
         if (playerState == PlayerState.DodgeRolling)
             CheckBounds();
 
@@ -144,7 +145,7 @@ public class HookMovement : MonoBehaviour
         var acceleration = _acceleration * _accelerationFactorFromDot.Evaluate(Vector2.Dot(move, _goalVel.normalized));
         
         _goalVel = Vector2.MoveTowards(_goalVel, goalVel, acceleration * Time.deltaTime);
-        _rb.AddForce(_goalVel, ForceMode2D.Impulse);
+        _rb.AddForce(_goalVel * Time.deltaTime, ForceMode2D.Impulse);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -233,8 +234,8 @@ public class HookMovement : MonoBehaviour
 
         while (Time.time - startTIme < _dodgeRollTime) 
         {
-            _rb.AddForce(_rb.mass * _dodgeRollAccelerationCurve.Evaluate((Time.time - startTIme) / _dodgeRollTime) * _dodgeRollAccelerationMultiplier * direction);
-            transform.rotation *= Quaternion.AngleAxis(1, Vector3.up);
+            _rb.AddForce(direction * (Time.deltaTime * (_rb.mass * _dodgeRollAccelerationCurve.Evaluate((Time.time - startTIme) / _dodgeRollTime) * _dodgeRollAccelerationMultiplier)));
+            transform.rotation *= Quaternion.AngleAxis(1200 * Time.deltaTime, Vector3.up);
 
             await UniTask.Yield();
         }

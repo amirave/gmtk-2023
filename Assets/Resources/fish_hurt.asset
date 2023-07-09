@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac7ff80e19e35bb498015f526db931de, type: 3}
-  m_Name: metal_hit
+  m_Name: fish_hurt
   m_EditorClassIdentifier: 
   sfx:
-  - {fileID: 8300000, guid: 0a3f58b3a381b8c4ebde87842dd28093, type: 3}
-  minVolume: 0.77
-  maxVolume: 1.15
-  minPitch: 0.8
-  maxPitch: 1.07
+  - {fileID: 8300000, guid: 0c5e8e064df3af547bd1831ad63489b6, type: 3}
+  minVolume: 1
+  maxVolume: 1
+  minPitch: 1
+  maxPitch: 1
