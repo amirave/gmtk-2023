@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: pufferfish_enter
   m_EditorClassIdentifier: 
   sfx:
-  - {fileID: 8300000, guid: 52af48bcc202db94e89aa80061441811, type: 3}
+  - {fileID: 8300000, guid: 9149d4d5ab639484091c5ce17928f5af, type: 3}
   minVolume: 1
   maxVolume: 1
   minPitch: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: game_over
   m_EditorClassIdentifier: 
   sfx:
-  - {fileID: 8300000, guid: 4b11ebf2471e12947b0813ce94ffceae, type: 3}
+  - {fileID: 8300000, guid: ecca7c7724ee8f74bb25fdb7d6f4e1d3, type: 3}
   minVolume: 1
   maxVolume: 1.01
   minPitch: 0.99

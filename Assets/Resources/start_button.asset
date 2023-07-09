@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: start_button
   m_EditorClassIdentifier: 
   sfx:
-  - {fileID: 8300000, guid: 4e50db9e4df9e5c4b9908ae021881af2, type: 3}
+  - {fileID: 8300000, guid: 4dfb22d169caf6b49a0688ab21273312, type: 3}
   minVolume: 1
   maxVolume: 1
   minPitch: 1

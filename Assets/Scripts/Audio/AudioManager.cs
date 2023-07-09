@@ -61,6 +61,7 @@ namespace Audio
         {
             foreach (var sfx in Resources.FindObjectsOfTypeAll<SoundEffect>())
             {
+                print(sfx.name);
                 var sfxId = sfx.name;
                 _sfxClips.Add(sfxId, sfx);
             }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: gulp
   m_EditorClassIdentifier: 
   sfx:
-  - {fileID: 8300000, guid: 52fa26e3b5239f042a526702b0f1c2b0, type: 3}
+  - {fileID: 8300000, guid: 4ee3b549747174f4b94c14ec63598c14, type: 3}
   minVolume: 0.61
   maxVolume: 1.39
   minPitch: 0.8
