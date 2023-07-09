@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0fedea957644da04b96183921ea1f6de
+guid: 254d20241bbc152479bbfc4f20623911
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -153,22 +153,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Button_0
+      name: gradient_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 10
         y: 0
-        width: 1007
-        height: 183
+        width: 990
+        height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 150, y: 69, z: 150, w: 66}
+      pivot: {x: 0, y: 0}
+      border: {x: 400, y: 0, z: 400, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4d4074b12411b04886e6fd8b0282794
-      internalID: 564108488
+      spriteID: e4ee37d5da99ded43a03d2cf9bab9986
+      internalID: 1040986421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gradient_1
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 268
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a80f3c6e1fad6094db1e523ee3689a60
+      internalID: 494740316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gradient_2
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 253
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82e60b2ba8fca6c4a838b6c1d4f85021
+      internalID: 557467805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gradient_3
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 48
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eaea87fce2049848a7a76974f996a9d
+      internalID: -844510786
       vertices: []
       indices: 
       edges: []
@@ -184,7 +247,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Button_0: 564108488
+      gradient_1: 494740316
+      gradient_3: -844510786
+      gradient_2: 557467805
+      gradient_0: 1040986421
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
