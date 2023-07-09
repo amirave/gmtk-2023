@@ -21,7 +21,7 @@ namespace Story
 
         private StoryFrame CurFrame => _storyFrames[_curFrameIndex];
         
-        private void Awake()
+        private void Start()
         {
             NextText();
             AudioManager.Instance.PlayMusicTrack("cutscene_music");
@@ -42,11 +42,23 @@ namespace Story
             var index = (int)_curSpriteIndex;
 
             if (_imageSlot != null)
-                _imageSlot.sprite = CurFrame.animSprites[index % CurFrame.animSprites.Length];
+            {
+                if (CurFrame.playOnce)
+                    _imageSlot.sprite = CurFrame.animSprites[Mathf.Min(index , CurFrame.animSprites.Length - 1)];
+                else
+                    _imageSlot.sprite = CurFrame.animSprites[index % CurFrame.animSprites.Length];
+            }
         }
 
         private void NextText()
         {
+            if (_curTextIndex >= CurFrame.dialogLines.Length)
+            {
+                NextFrame().Forget();
+                if (_curFrameIndex >= _storyFrames.Length)
+                    return;
+            }
+            
             if (_textSlot.IsTyping())
             {
                 _textSlot.SkipText();
@@ -55,10 +67,6 @@ namespace Story
             {
                 _textSlot.TypeText(CurFrame.dialogLines[_curTextIndex]);
                 _curTextIndex++;
-                if (_curTextIndex >= CurFrame.dialogLines.Length)
-                {
-                    NextFrame().Forget();
-                }
             }
         }
 
