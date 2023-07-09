@@ -11,6 +11,8 @@ public class DifficultySettings : ScriptableObject
     public Difficulty phaseRate;
     public Difficulty phaseInternalDelay;
     public Difficulty fishSpeed;
+    public Difficulty pufferRate;
+    public Difficulty sharkRate;
 }
 
 [Serializable]

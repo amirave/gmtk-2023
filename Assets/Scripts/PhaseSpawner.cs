@@ -16,14 +16,16 @@ public class PhaseSpawner : MonoBehaviour
     [SerializeField] private List<FishSpawnPattern> _medSpawnPatterns;
     [SerializeField] private List<FishSpawnPattern> _hardSpawnPatterns;
 
+    [SerializeField] private GameObject _pufferSpawn;
+    [SerializeField] private GameObject _sharkSpawn;
+
     private float _timeBetweenPhases = 8f;
-    private int _obstaclePerPhase = 3;
-    private float _timeBetweenObstacles = 1f;
 
     private bool _active = false;
     private float _lastPhaseStart = 0;
+    private float _lastPufferSent = 0;
+    private float _lastSharkSent = 0;
     private bool _midPhase = false;
-    private float _obstacleHeight;
 
     private GameManager gm => GameManager.Instance;
 
@@ -48,6 +50,20 @@ public class PhaseSpawner : MonoBehaviour
             return;
 
         _timeBetweenPhases = 1 / _difficultySettings.phaseRate.GetCurrent(_now);
+        float timeBetweenPuffers = 1 / _difficultySettings.pufferRate.GetCurrent(_now);
+        float timeBetweenSharks = 1 / _difficultySettings.sharkRate.GetCurrent(_now);
+
+        if (Time.time - _lastPufferSent >= timeBetweenPuffers)
+        {
+            _lastPufferSent = Time.time;
+            SendFish(_pufferSpawn);
+        }
+
+        if (Time.time - _lastSharkSent >= timeBetweenSharks)
+        {
+            _lastSharkSent = Time.time;
+            SendFish(_sharkSpawn);
+        }
 
         if (Time.time - _lastPhaseStart >= _timeBetweenPhases)
         {
@@ -118,5 +134,19 @@ public class PhaseSpawner : MonoBehaviour
         }
 
         _midPhase = false;
+    }
+
+    private void SendFish(GameObject gameObject)
+    {
+        float height = Random.value * 1.6f - 0.8f;
+        float direction = Random.value > 0.5f ? 1 : -1;
+        Vector3 spawnPos = new Vector3(direction * 1.2f, height);
+        spawnPos.Scale(gm.GetArenaBounds().extents);
+        spawnPos += gm.GetArenaBounds().center;
+
+        float correctedAngle = direction == 1 ? 180 : 0;
+        Quaternion rot = Quaternion.AngleAxis(correctedAngle, Vector3.forward);
+
+        Instantiate(gameObject, spawnPos, rot, transform);
     }
 }

@@ -32,3 +32,13 @@ MonoBehaviour:
     max: 0
     timeUntilMax: 0
     unclamped: 0
+  pufferRate:
+    min: 0
+    max: 0.1
+    timeUntilMax: 150
+    unclamped: 0
+  sharkRate:
+    min: 0
+    max: 0.05
+    timeUntilMax: 150
+    unclamped: 0

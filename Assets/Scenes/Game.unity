@@ -1409,6 +1409,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 755c6ef9b24d26246ae2c478a2f9da25, type: 2}
   _medSpawnPatterns: []
   _hardSpawnPatterns: []
+  _pufferSpawn: {fileID: 919667599391091765, guid: 54fdf735ca06a294b8a7b5267b91b5b3, type: 3}
+  _sharkSpawn: {fileID: 6311160677611938346, guid: ee0f497a49bffd84084a810b715dce79, type: 3}
 --- !u!1 &718193724
 GameObject:
   m_ObjectHideFlags: 0
@@ -2394,7 +2396,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -608.52, y: -64.58002}
+  m_AnchoredPosition: {x: -608.5201, y: -64.58002}
   m_SizeDelta: {x: -1217.03, y: 129.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1858390908
