@@ -12,7 +12,9 @@ public class DifficultySettings : ScriptableObject
     public Difficulty maxFishAllowed;
     public Difficulty phaseInternalDelay;
     public Difficulty fishSpeed;
+    [SerializeField] public float pufferSpawnStart;
     public Difficulty pufferRate;
+    [SerializeField] public float sharkSpawnStart;
     public Difficulty sharkRate;
 }
 

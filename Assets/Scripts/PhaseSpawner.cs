@@ -8,6 +8,7 @@ using Fish;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Audio;
 
 public class PhaseSpawner : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class PhaseSpawner : MonoBehaviour
     private float _lastPufferSent = 0;
     private float _lastSharkSent = 0;
     private bool _midPhase = false;
+
+    private bool _pufferSpawnPlayed = false;
+    private bool _sharkSpawnPlayed = false;
 
     private GameManager gm => GameManager.Instance;
 
@@ -50,21 +54,34 @@ public class PhaseSpawner : MonoBehaviour
             return;
 
         _timeBetweenPhases = 1 / _difficultySettings.phaseRate.GetCurrent(_now);
-        float timeBetweenPuffers = 1 / _difficultySettings.pufferRate.GetCurrent(_now);
-        float timeBetweenSharks = 1 / _difficultySettings.sharkRate.GetCurrent(_now);
+        float timeBetweenPuffers = 1 / _difficultySettings.pufferRate.GetCurrent(_now - _difficultySettings.pufferSpawnStart);
+        float timeBetweenSharks = 1 / _difficultySettings.sharkRate.GetCurrent(_now - _difficultySettings.sharkSpawnStart);
 
-        if (Time.time - _lastPufferSent >= timeBetweenPuffers)
+
+        if (Time.time > _difficultySettings.pufferSpawnStart)
+        {
+            _pufferSpawnPlayed = true;
+            AudioManager.Instance.PlayEffect("sufferfish_enter");
+        }
+        if (Time.time > _difficultySettings.sharkSpawnStart)
+        {
+            _sharkSpawnPlayed = true;
+            AudioManager.Instance.PlayEffect("shark_enter");
+        }
+
+        if (Time.time - _difficultySettings.pufferSpawnStart - _lastPufferSent >= timeBetweenPuffers)
         {
             _lastPufferSent = Time.time;
             SendFish(_pufferSpawn);
         }
 
-        if (Time.time - _lastSharkSent >= timeBetweenSharks)
+        if (Time.time - _difficultySettings.sharkSpawnStart - _lastSharkSent >= timeBetweenSharks)
         {
             _lastSharkSent = Time.time;
             SendFish(_sharkSpawn);
         }
-        else if (GameManager.Instance.player._idleTime > 5f)
+        
+        if (GameManager.Instance.player._idleTime > 5f)
         {
             _lastSharkSent = Time.time;
             SendFish(_sharkSpawn);
