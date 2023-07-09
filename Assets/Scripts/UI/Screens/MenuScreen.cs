@@ -45,6 +45,7 @@ namespace UI.Screens
 
         public void SetTextReplacement(string query, string value)
         {
+            if (textReplacements == null) textReplacements = new();
             textReplacements[query] = value;
             foreach (var text in _textObjects)
             {

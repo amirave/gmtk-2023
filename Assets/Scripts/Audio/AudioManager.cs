@@ -16,7 +16,7 @@ namespace Audio
         [SerializeField] private AudioMixer _mixer;
     
         private PlayerState _playerState;
-    
+  
         private Dictionary<string, SoundEffect> _sfxClips;
         private List<AudioSource> _sfxSources;
         private List<AudioMusicTrack> _bgmTracks;

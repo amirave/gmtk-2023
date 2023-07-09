@@ -40,7 +40,7 @@ public class PhaseSpawner : MonoBehaviour
         _difficultySettings = gm.difficulty;
         _active = true;
 
-        _now = 1000;
+        _now = 0;
     }
 
     public void Stop()
@@ -56,16 +56,6 @@ public class PhaseSpawner : MonoBehaviour
         _timeBetweenPhases = 1 / _difficultySettings.phaseRate.GetCurrent(_now);
         float timeBetweenPuffers = 1 / _difficultySettings.pufferRate.GetCurrent(_now - _difficultySettings.pufferSpawnStart);
         float timeBetweenSharks = 1 / _difficultySettings.sharkRate.GetCurrent(_now - _difficultySettings.sharkSpawnStart);
-
-
-        if (Time.time > _difficultySettings.pufferSpawnStart)
-        {
-            _pufferSpawnPlayed = true;
-        }
-        if (Time.time > _difficultySettings.sharkSpawnStart)
-        {
-            _sharkSpawnPlayed = true;
-        }
 
         if (Time.time - _difficultySettings.pufferSpawnStart - _lastPufferSent >= timeBetweenPuffers)
         {

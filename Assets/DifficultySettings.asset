@@ -33,17 +33,17 @@ MonoBehaviour:
     timeUntilMax: 300
     unclamped: 0
   fishSpeed:
-    min: 0
-    max: 3
+    min: 1
+    max: 2
     timeUntilMax: 60
     unclamped: 0
-  pufferSpawnStart: 20
+  pufferSpawnStart: 15
   pufferRate:
     min: 0
     max: 0.1
-    timeUntilMax: 60
+    timeUntilMax: 45
     unclamped: 0
-  sharkSpawnStart: 10
+  sharkSpawnStart: 30
   sharkRate:
     min: 0
     max: 0.05

@@ -89,7 +89,7 @@ public class HookMovement : MonoBehaviour
             _canDodgeRoll = true;
         }
 
-        if ((_invincible && playerState == PlayerState.Moving) && 
+        if (_invincible && playerState == PlayerState.Moving && 
                 Time.time % _blinkInterval > 0.5f * _blinkInterval)
             _spriteRenderer.color = Color.clear;
         else
