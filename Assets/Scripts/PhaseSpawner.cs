@@ -118,6 +118,10 @@ public class PhaseSpawner : MonoBehaviour
         if (pattern.randomHeightOffset)
             heightOffset = Random.value * 1f - 0.5f;
 
+        float angleOffset = 0;
+        if (pattern.randomAngleOffset)
+            angleOffset = Random.value * 45 - 22.5f;
+
 
         foreach (var spawn in pattern.spawns)
         {
@@ -139,10 +143,7 @@ public class PhaseSpawner : MonoBehaviour
                 spawnPos.Scale(gm.GetArenaBounds().extents);
                 spawnPos += gm.GetArenaBounds().center;
 
-                var usedAngle = spawn.angle;
-                if (usedAngle == -100)
-                    usedAngle = Random.value * 30 - 15;
-                var correctedAngle = -normalizedDir * usedAngle + (normalizedDir == 1 ? 180 : 0);
+                var correctedAngle = -normalizedDir * (spawn.angle + angleOffset) + (normalizedDir == 1 ? 180 : 0);
                 var rot = Quaternion.AngleAxis(correctedAngle, Vector3.forward);
 
                 Instantiate(spawn.school, spawnPos, rot, transform);

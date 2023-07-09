@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f83f686fc43941a392c2e6aeb4f6fd7d, type: 3}
-  m_Name: BigFeesh
+  m_Name: SardinePellet
   m_EditorClassIdentifier: 
-  weight: 3
+  weight: 5
   randomHeightOffset: 1
   randomAngleOffset: 1
   spawns:
   - spawnMode: 0
-    school: {fileID: 4249259675062744912, guid: e32c0256d5a152543a1764152b538b2c, type: 3}
+    school: {fileID: 5096744971669464930, guid: 4a463b6da24f9b741a87fa61550c1113, type: 3}
     height: 0
     angle: 0
     delayUntilNext: 0
-    repeatTimes: 1
+    repeatTimes: 0

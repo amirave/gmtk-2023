@@ -86,6 +86,7 @@ public class HookMovement : MonoBehaviour
         if (Time.time - _lastDodgeRollTime >= _dodgeRollCooldown && !_canDodgeRoll)
         {
             Flash();
+            AudioManager.Instance.PlayEffect("roll_recharge");
             _canDodgeRoll = true;
         }
 
@@ -166,6 +167,8 @@ public class HookMovement : MonoBehaviour
         
         // TODO indicator and sfx
         AudioManager.Instance.PlayEffect("fish_hurt");
+
+        AudioManager.Instance.PlayEffect("fish_bite");
 
         // Small wait
         fish.Capture();

@@ -328,7 +328,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _dodgeRollAccelerationMultiplier: 20.08
   _dodgeRollCooldown: 1
-  _gracePeriod: 0.5
+  _gracePeriod: 0.25
   _ropeLine: {fileID: 2001126702}
   _captureMoveSpeed: 3
   _captureHoldDuration: 1.5
@@ -1618,10 +1618,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 86177db3d6dea4642b145f9994619cc7, type: 2}
   - {fileID: 11400000, guid: 1fa6dcc69a300a0409a94977f22d21d5, type: 2}
   - {fileID: 11400000, guid: 8c32905785219b1428bd46c5c9cd72b2, type: 2}
+  - {fileID: 11400000, guid: 9038f9258ac93c647bb58005c46fbbb3, type: 2}
   _medSpawnPatterns:
   - {fileID: 11400000, guid: 7a7920fa5e5160d4b87da28477fe9d55, type: 2}
   - {fileID: 11400000, guid: bd6d01b009975ce44b45913a668cc22a, type: 2}
   - {fileID: 11400000, guid: 32695410afd4ddf4a9c3806953a86872, type: 2}
+  - {fileID: 11400000, guid: ab1acdbb06f6ba74a89e2d47a97df3d0, type: 2}
   _hardSpawnPatterns:
   - {fileID: 11400000, guid: 51caa7f694d81a749ba7837e718a2d6b, type: 2}
   - {fileID: 11400000, guid: 9096f9072f272d84b9b572dd37c04a92, type: 2}

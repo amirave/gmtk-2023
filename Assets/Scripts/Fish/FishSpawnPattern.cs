@@ -9,6 +9,7 @@ namespace Fish
     {
         [SerializeField] public float weight;
         [SerializeField] public bool randomHeightOffset;
+        [SerializeField] public bool randomAngleOffset;
         [SerializeField] public List<FishSpawn> spawns;
 
         public float GetTotalTime() // TODO: make it work with repeated patterns

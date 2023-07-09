@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83f686fc43941a392c2e6aeb4f6fd7d, type: 3}
+  m_Name: Doubles
+  m_EditorClassIdentifier: 
+  weight: 10
+  randomHeightOffset: 1
+  randomAngleOffset: 0
+  spawns:
+  - spawnMode: 0
+    school: {fileID: 1678237259452258971, guid: 6153eada650865f4c8b36e1fc6ee02c6, type: 3}
+    height: 0
+    angle: -10
+    delayUntilNext: 0
+    repeatTimes: 1
+  - spawnMode: 1
+    school: {fileID: 1678237259452258971, guid: 6153eada650865f4c8b36e1fc6ee02c6, type: 3}
+    height: 0
+    angle: -10
+    delayUntilNext: 0.5
+    repeatTimes: 1
+  - spawnMode: 0
+    school: {fileID: 1678237259452258971, guid: 6153eada650865f4c8b36e1fc6ee02c6, type: 3}
+    height: 0.3
+    angle: 10
+    delayUntilNext: 0
+    repeatTimes: 1
+  - spawnMode: 1
+    school: {fileID: 1678237259452258971, guid: 6153eada650865f4c8b36e1fc6ee02c6, type: 3}
+    height: 0.3
+    angle: 10
+    delayUntilNext: 0.5
+    repeatTimes: 1
