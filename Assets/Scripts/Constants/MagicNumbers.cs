@@ -6,7 +6,7 @@ public static class MagicNumbers
 {
     public const float SOUND_ENABLED_VOLUME_DB = -30.0f; // Volume of a sound channel in Db when enabled
     public const float SOUND_DISABLED_VOLUME_DB = -80.0f; // Volume of a sound channel in Db when disabled
-    public const float MUSIC_CROSSFADE_DURATION = 0.5f;
+    public const float MUSIC_CROSSFADE_DURATION = 2f;
 
     public const string SFX_PATH = "Audio/SFX";
 

@@ -40,7 +40,7 @@ public class PhaseSpawner : MonoBehaviour
         _difficultySettings = gm.difficulty;
         _active = true;
 
-        _now = 0;
+        _now = 1000;
     }
 
     public void Stop()
@@ -61,30 +61,31 @@ public class PhaseSpawner : MonoBehaviour
         if (Time.time > _difficultySettings.pufferSpawnStart)
         {
             _pufferSpawnPlayed = true;
-            AudioManager.Instance.PlayEffect("sufferfish_enter");
         }
         if (Time.time > _difficultySettings.sharkSpawnStart)
         {
             _sharkSpawnPlayed = true;
-            AudioManager.Instance.PlayEffect("shark_enter");
         }
 
         if (Time.time - _difficultySettings.pufferSpawnStart - _lastPufferSent >= timeBetweenPuffers)
         {
             _lastPufferSent = Time.time;
             SendFish(_pufferSpawn);
+            AudioManager.Instance.PlayEffect("pufferfish_enter");
         }
 
         if (Time.time - _difficultySettings.sharkSpawnStart - _lastSharkSent >= timeBetweenSharks)
         {
             _lastSharkSent = Time.time;
             SendFish(_sharkSpawn);
+            AudioManager.Instance.PlayEffect("shark_enter");
         }
         
         if (GameManager.Instance.player._idleTime > 5f)
         {
             _lastSharkSent = Time.time;
             SendFish(_sharkSpawn);
+            AudioManager.Instance.PlayEffect("shark_enter");
             GameManager.Instance.player._idleTime = 0;
         }
 

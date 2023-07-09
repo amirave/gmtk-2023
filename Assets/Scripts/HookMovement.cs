@@ -44,6 +44,7 @@ public class HookMovement : MonoBehaviour
     private float _lastDodgeRollTime = 0;
     private bool _canDodgeRoll = true;
     public float _idleTime;
+    private Vector3 _ropeOrigin;
     
     private Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
@@ -62,11 +63,12 @@ public class HookMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _ropeOrigin = new Vector3(1.14f, 6f);
     }
 
     void Update()
     {
-        if (playerState == PlayerState.Moving)
+        if (playerState == PlayerState.Moving && GameManager.Instance.IsPlaying())
         {
             if (Input.GetKeyDown(KeyCode.Space) && _canDodgeRoll)
             {
@@ -93,7 +95,8 @@ public class HookMovement : MonoBehaviour
         else
             _spriteRenderer.color = Color.white;
 
-        _ropeLine.SetPositions(new[]{transform.position + Vector3.up * 0.5f, new Vector3(1.14f, 5.01f)});
+        _ropeOrigin = new Vector3(Mathf.Lerp(_ropeOrigin.x, transform.position.x, 0.2f * Time.deltaTime), _ropeOrigin.y);
+        _ropeLine.SetPositions(new[]{transform.position + Vector3.up * 0.4f, _ropeOrigin});
     }
 
     private void CheckBounds()
