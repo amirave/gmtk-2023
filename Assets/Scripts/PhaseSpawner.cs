@@ -17,6 +17,9 @@ public class PhaseSpawner : MonoBehaviour
     [SerializeField] private List<FishSpawnPattern> _medSpawnPatterns;
     [SerializeField] private List<FishSpawnPattern> _hardSpawnPatterns;
 
+    private List<FishSpawnPattern> _possiblePatterns;
+    private int _currentDifficulty = 0;
+
     [SerializeField] private GameObject _pufferSpawn;
     [SerializeField] private GameObject _sharkSpawn;
 
@@ -28,15 +31,14 @@ public class PhaseSpawner : MonoBehaviour
     private float _lastSharkSent = 0;
     private bool _midPhase = false;
 
-    private bool _pufferSpawnPlayed = false;
-    private bool _sharkSpawnPlayed = false;
-
     private GameManager gm => GameManager.Instance;
 
     private float _now;
 
     public void Begin()
     {
+        _possiblePatterns = _easySpawnPatterns;
+
         _difficultySettings = gm.difficulty;
         _active = true;
 
@@ -53,18 +55,30 @@ public class PhaseSpawner : MonoBehaviour
         if (_active == false)
             return;
 
+        int patternDifficulty = (int)(_difficultySettings.phaseDifficulty.GetCurrent(_now) * 3);
+
+        if (patternDifficulty > _currentDifficulty )
+        {
+            if (patternDifficulty == 1)
+                _possiblePatterns.AddRange(_medSpawnPatterns);
+            else if (patternDifficulty == 2)
+                _possiblePatterns.AddRange(_hardSpawnPatterns);
+
+            _currentDifficulty = patternDifficulty;
+        }
+
         _timeBetweenPhases = 1 / _difficultySettings.phaseRate.GetCurrent(_now);
         float timeBetweenPuffers = 1 / _difficultySettings.pufferRate.GetCurrent(_now - _difficultySettings.pufferSpawnStart);
         float timeBetweenSharks = 1 / _difficultySettings.sharkRate.GetCurrent(_now - _difficultySettings.sharkSpawnStart);
 
-        if (Time.time - _difficultySettings.pufferSpawnStart - _lastPufferSent >= timeBetweenPuffers)
+        if (_now - _difficultySettings.pufferSpawnStart - _lastPufferSent >= timeBetweenPuffers)
         {
             _lastPufferSent = Time.time;
             SendFish(_pufferSpawn);
             AudioManager.Instance.PlayEffect("pufferfish_enter");
         }
 
-        if (Time.time - _difficultySettings.sharkSpawnStart - _lastSharkSent >= timeBetweenSharks)
+        if (_now - _difficultySettings.sharkSpawnStart - _lastSharkSent >= timeBetweenSharks)
         {
             _lastSharkSent = Time.time;
             SendFish(_sharkSpawn);
@@ -93,28 +107,17 @@ public class PhaseSpawner : MonoBehaviour
 
     private FishSpawnPattern GetRandomSpawnPattern()
     {
-        int patternDifficulty = (int)(_difficultySettings.phaseDifficulty.GetCurrent(_now) * 3);
-        int totalLength = _easySpawnPatterns.Count;
-        if (patternDifficulty > 0)
-            totalLength += _medSpawnPatterns.Count;
-        if (patternDifficulty > 1)
-            totalLength += _hardSpawnPatterns.Count;
-
-        int i = Random.Range(0, totalLength);
-
-        if (i < _easySpawnPatterns.Count)
-            return _easySpawnPatterns[i];
-        i -= _easySpawnPatterns.Count;
-        if (i < _medSpawnPatterns.Count)
-            return _medSpawnPatterns[i];
-        i -= _medSpawnPatterns.Count;
-        return _hardSpawnPatterns[i];
+        return _possiblePatterns[Utils.GetRandomWeightedIndex(_possiblePatterns.Select(p => p.weight).ToArray())];
     }
 
     private async void StartPhase(FishSpawnPattern pattern)
     {
         _midPhase = true;
         var uniformSpawnRight = Random.value > 0.5f;
+        float heightOffset = 0;
+        if (pattern.randomHeightOffset)
+            heightOffset = Random.value * 1f - 0.5f;
+
 
         foreach (var spawn in pattern.spawns)
         {
@@ -132,11 +135,14 @@ public class PhaseSpawner : MonoBehaviour
                     FishSpawnMode.Random => Random.value > 0.5f ? -1 : 1
                 };
 
-                var spawnPos = new Vector3(normalizedDir * 1.2f, spawn.height);
+                var spawnPos = new Vector3(normalizedDir * 1.2f, spawn.height + heightOffset);
                 spawnPos.Scale(gm.GetArenaBounds().extents);
                 spawnPos += gm.GetArenaBounds().center;
 
-                var correctedAngle = -normalizedDir * spawn.angle + (normalizedDir == 1 ? 180 : 0);
+                var usedAngle = spawn.angle;
+                if (usedAngle == -100)
+                    usedAngle = Random.value * 30 - 15;
+                var correctedAngle = -normalizedDir * usedAngle + (normalizedDir == 1 ? 180 : 0);
                 var rot = Quaternion.AngleAxis(correctedAngle, Vector3.forward);
 
                 Instantiate(spawn.school, spawnPos, rot, transform);

@@ -8,19 +8,19 @@ public class Sardine : FishAI
 {
     [SerializeField] private float _speed;
 
-    private DifficultySettings _difficulty;
+    private GameManager _gm;
 
     protected override void Start()
     {
         base.Start();
 
-        _difficulty = GameManager.Instance.difficulty;
+        _gm = GameManager.Instance;
     }
 
     protected override void FishUpdate()
     {
         base.FishUpdate();
 
-        transform.position = transform.position + transform.rotation * Vector3.right * _speed * _difficulty.fishSpeed.GetCurrent(Time.time) * Time.deltaTime;
+        transform.position = transform.position + transform.rotation * Vector3.right * _speed * _gm.difficulty.fishSpeed.GetCurrent(_gm.timeSinceStart) * Time.deltaTime;
     }
 }

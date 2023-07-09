@@ -10,12 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f83f686fc43941a392c2e6aeb4f6fd7d, type: 3}
-  m_Name: SharkAttack
+  m_Name: Screenwipe
   m_EditorClassIdentifier: 
-  spawns:
-  - spawnMode: 2
-    school: {fileID: 2957785248818448018, guid: 6a7e2c2ec4978b64aab7f6ced73dc75d, type: 3}
-    height: 0
-    angle: 0
-    delayUntilNext: 0
-    repeatTimes: 1
+  spawns: []

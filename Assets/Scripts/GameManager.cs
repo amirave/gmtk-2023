@@ -28,6 +28,8 @@ namespace DefaultNamespace
         private float _score;
         
         private bool _isPlaying;
+
+        public float timeSinceStart = 0;
         
         void Awake()
         {
@@ -79,6 +81,8 @@ namespace DefaultNamespace
         {
             if (_isPlaying)
                 AddScore(Time.deltaTime * _scorePerSecond);
+
+            timeSinceStart += Time.deltaTime;
         }
 
         private void OnDrawGizmos()
@@ -103,6 +107,8 @@ namespace DefaultNamespace
         private void OnPlayerDamage(int health)
         {
             _hudScreen.SetEmotion(_emotionSprites[player.GetTotalHealth() - health]);
+            if (health == 1)
+                AudioManager.Instance.PlayMusicTrack("game_theme_intense");
         }
 
         private void OnPlayerDeath()
