@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 using Fish;
@@ -17,14 +18,20 @@ public class Shark : FishAI
     {
         base.Start();
 
-        _hook = GameplayManager.Instance.player;
+        _hook = GameManager.Instance.player;
     }
 
     protected override void FishUpdate()
     {
         base.FishUpdate();
-        if (Vector3.Angle(transform.right, _hook.transform.position - transform.position) < 65)
+
+        var dir = Vector3.left;
+        if (Vector3.Angle(transform.right, Vector3.right) <= 90)
+            dir = Vector3.right;
+
+        if (Vector3.Angle(dir, _hook.transform.position - transform.position) < 25)
             transform.right = Vector3.RotateTowards(transform.right, _hook.transform.position - transform.position, _maxRotateDelta * Time.deltaTime, 1);
-        transform.position = transform.position + transform.rotation * Vector3.right * _speed * Time.deltaTime;
+        
+        transform.position += transform.right * (_speed * Time.deltaTime);
     }
 }

@@ -10,56 +10,66 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f83f686fc43941a392c2e6aeb4f6fd7d, type: 3}
-  m_Name: ArcSpawnPattern
+  m_Name: MidArcSpawnPattern
   m_EditorClassIdentifier: 
   spawns:
   - spawnMode: 0
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
-    height: -1
-    angle: 60
-    delayUntilNext: 0.3
-  - spawnMode: 0
-    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
-    height: -1
-    angle: 45
-    delayUntilNext: 0.3
-  - spawnMode: 0
-    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
-    height: -1
+    height: 0
     angle: 30
-    delayUntilNext: 0.3
+    delayUntilNext: 1
+    repeatTimes: 1
   - spawnMode: 0
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
-    height: -1
+    height: 0
     angle: 15
-    delayUntilNext: 0.3
+    delayUntilNext: 1
+    repeatTimes: 1
   - spawnMode: 0
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
-    height: -1
-    angle: 5
-    delayUntilNext: 0.3
+    height: 0
+    angle: 0
+    delayUntilNext: 1
+    repeatTimes: 1
+  - spawnMode: 0
+    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
+    height: 0
+    angle: -15
+    delayUntilNext: 1
+    repeatTimes: 1
+  - spawnMode: 0
+    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
+    height: 0
+    angle: -30
+    delayUntilNext: 1
+    repeatTimes: 1
   - spawnMode: 1
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
-    height: -1
-    angle: 60
-    delayUntilNext: 0.3
-  - spawnMode: 1
-    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
-    height: -1
-    angle: 45
-    delayUntilNext: 0.3
-  - spawnMode: 1
-    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
-    height: -1
+    height: 0
     angle: 30
-    delayUntilNext: 0.3
+    delayUntilNext: 1
+    repeatTimes: 1
   - spawnMode: 1
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
-    height: -1
+    height: 0
     angle: 15
-    delayUntilNext: 0.3
+    delayUntilNext: 1
+    repeatTimes: 1
   - spawnMode: 1
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
-    height: -1
+    height: 0
     angle: 5
-    delayUntilNext: 0.3
+    delayUntilNext: 1
+    repeatTimes: 1
+  - spawnMode: 1
+    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
+    height: 0
+    angle: -15
+    delayUntilNext: 1
+    repeatTimes: 1
+  - spawnMode: 1
+    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
+    height: 0
+    angle: -30
+    delayUntilNext: 1
+    repeatTimes: 1

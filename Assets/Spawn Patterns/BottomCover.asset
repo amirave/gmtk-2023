@@ -15,25 +15,25 @@ MonoBehaviour:
   spawns:
   - spawnMode: 0
     school: {fileID: 4072858693000730288, guid: a2227804e37f04b4b9bb85747a07f7bf, type: 3}
-    height: -1
-    angle: 0
+    height: -0.8
+    angle: -5
     delayUntilNext: 0
     repeatTimes: 1
   - spawnMode: 1
     school: {fileID: 4072858693000730288, guid: a2227804e37f04b4b9bb85747a07f7bf, type: 3}
-    height: -1
-    angle: 0
+    height: -0.8
+    angle: -5
     delayUntilNext: 0.2
     repeatTimes: 1
   - spawnMode: 1
     school: {fileID: 4072858693000730288, guid: a2227804e37f04b4b9bb85747a07f7bf, type: 3}
-    height: -0.8
-    angle: 0
+    height: -0.6
+    angle: -5
     delayUntilNext: 0
-    repeatTimes: 0
+    repeatTimes: 1
   - spawnMode: 0
     school: {fileID: 4072858693000730288, guid: a2227804e37f04b4b9bb85747a07f7bf, type: 3}
-    height: -0.8
-    angle: 0
+    height: -0.6
+    angle: -5
     delayUntilNext: 0
-    repeatTimes: 0
+    repeatTimes: 1

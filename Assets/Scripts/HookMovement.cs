@@ -56,8 +56,11 @@ public class HookMovement : MonoBehaviour
     void Update()
     {
         if (playerState == PlayerState.Moving)
+        {
             MovePlayer();
-        
+            CheckBounds();
+        }
+
         if ((_invincible && playerState == PlayerState.Moving) && 
                 Time.time % _blinkInterval > 0.5f * _blinkInterval)
             _spriteRenderer.color = Color.clear;
@@ -65,6 +68,36 @@ public class HookMovement : MonoBehaviour
             _spriteRenderer.color = Color.white;
 
         _ropeLine.SetPositions(new[]{transform.position + Vector3.up * 0.5f, new Vector3(1.14f, 5.01f)});
+    }
+
+    private void CheckBounds()
+    {
+        var pos = transform.position;
+        var gm = GameManager.Instance;
+        var bounds = gm.GetArenaBounds();
+        bounds.size *= 0.9f;
+        
+        if (pos.y > bounds.max.y)
+        {
+            pos.y = bounds.max.y;
+            _rb.velocity = new Vector2(_rb.velocity.x, Mathf.Min(_rb.velocity.y, 0));
+        }
+        else if (pos.y < bounds.min.y)
+        {
+            pos.y = bounds.min.y;
+            _rb.velocity = new Vector2(_rb.velocity.x, Mathf.Max(_rb.velocity.y, 0));
+        }
+        
+        if (pos.x > bounds.max.x)
+        {
+            pos.x = bounds.max.x;
+            _rb.velocity = new Vector2(Mathf.Min(_rb.velocity.x, 0), _rb.velocity.y);
+        }
+        else if (pos.x < bounds.min.x)
+        {
+            pos.x = bounds.min.x;
+            _rb.velocity = new Vector2(Mathf.Max(_rb.velocity.x, 0), _rb.velocity.y);
+        }
     }
 
     private void MovePlayer()
@@ -104,7 +137,7 @@ public class HookMovement : MonoBehaviour
         await UniTask.Delay(100);
         fish.Capture();
 
-        var gm = GameplayManager.Instance;
+        var gm = GameManager.Instance;
         var origPos = transform.position;
         
         // Start lifting the hook

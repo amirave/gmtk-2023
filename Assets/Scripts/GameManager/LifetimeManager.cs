@@ -7,9 +7,9 @@ using UnityEngine.SceneManagement;
 
 namespace Managers
 {
-    public class GameManager : MonoBehaviour
+    public class LifetimeManager : MonoBehaviour
     {
-        public static GameManager Instance { get; private set; }
+        public static LifetimeManager Instance { get; private set; }
 
         void Awake()
         {

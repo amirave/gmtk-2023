@@ -18,28 +18,34 @@ MonoBehaviour:
     height: 0.8
     angle: 0
     delayUntilNext: 0
+    repeatTimes: 1
   - spawnMode: 1
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
     height: 0.2
     angle: 0
     delayUntilNext: 0
+    repeatTimes: 1
   - spawnMode: 1
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
     height: -0.4
     angle: 0
     delayUntilNext: 0
+    repeatTimes: 1
   - spawnMode: 0
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
     height: 0.5
     angle: 0
     delayUntilNext: 0
+    repeatTimes: 1
   - spawnMode: 0
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
     height: -0.1
     angle: 0
     delayUntilNext: 0
+    repeatTimes: 1
   - spawnMode: 0
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
     height: -0.7
     angle: 0
     delayUntilNext: 5
+    repeatTimes: 1

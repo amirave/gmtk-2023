@@ -25,13 +25,13 @@ public class PhaseSpawner : MonoBehaviour
     private bool _midPhase = false;
     private float _obstacleHeight;
 
-    private GameplayManager gs => GameplayManager.Instance;
+    private GameManager gm => GameManager.Instance;
 
     private float _now;
 
     public void Begin()
     {
-        _difficultySettings = gs.difficulty;
+        _difficultySettings = gm.difficulty;
         _active = true;
 
         _now = 0;
@@ -103,8 +103,8 @@ public class PhaseSpawner : MonoBehaviour
                 };
 
                 var spawnPos = new Vector3(normalizedDir * 1.2f, spawn.height);
-                spawnPos.Scale(gs.GetArenaBounds().extents);
-                spawnPos += gs.GetArenaBounds().center;
+                spawnPos.Scale(gm.GetArenaBounds().extents);
+                spawnPos += gm.GetArenaBounds().center;
 
                 var correctedAngle = -normalizedDir * spawn.angle + (normalizedDir == 1 ? 180 : 0);
                 var rot = Quaternion.AngleAxis(correctedAngle, Vector3.forward);

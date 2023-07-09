@@ -18,25 +18,10 @@ MonoBehaviour:
     timeUntilMax: 60
     unclamped: 0
   phaseRate:
-<<<<<<< HEAD
-    min: 0.4
-    max: 2
-    timeUntilMax: 150
-    unclamped: 1
-  phaseInternalDelay:
-    min: 1
-    max: 0.1
-    timeUntilMax: 300
-    unclamped: 0
-  fishSpeed:
-    min: 1
-    max: 5
-    timeUntilMax: 300
-=======
     min: 0.2
-    max: 1
+    max: 0.6
     timeUntilMax: 60
-    unclamped: 1
+    unclamped: 0
   phaseInternalDelay:
     min: 1
     max: 1
@@ -46,5 +31,4 @@ MonoBehaviour:
     min: 0
     max: 0
     timeUntilMax: 0
->>>>>>> 5e8e87c60fa1bc8af6406734eb20dc13cc48d74d
     unclamped: 0

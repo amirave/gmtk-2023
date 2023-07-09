@@ -23,7 +23,7 @@ public class Pufferfish : FishAI
     {
         base.Start();
 
-        _length = GameplayManager.Instance.GetArenaBounds().extents.x * 2;
+        _length = GameManager.Instance.GetArenaBounds().extents.x * 2;
         _horizontalSpeed = _length / _lapTime;
         if (transform.right.x < 0 )
             _horizontalSpeed *= -1;

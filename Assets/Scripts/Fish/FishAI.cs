@@ -1,6 +1,7 @@
 using DefaultNamespace;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using Cysharp.Threading.Tasks;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
@@ -12,7 +13,8 @@ namespace Fish
         public enum FishState
         {
             Moving,
-            Captured
+            Captured,
+            Returning
         }
 
         [Header("Animation")] 
@@ -40,9 +42,9 @@ namespace Fish
 
         protected virtual void Start()
         {
-            _floor = GameplayManager.Instance.GetArenaBounds().min.y;
-            _leftSide = GameplayManager.Instance.GetArenaBounds().min.x;
-            _rightSide = GameplayManager.Instance.GetArenaBounds().max.x;
+            _floor = GameManager.Instance.GetArenaBounds().min.y;
+            _leftSide = GameManager.Instance.GetArenaBounds().min.x;
+            _rightSide = GameManager.Instance.GetArenaBounds().max.x;
         }
 
         private void Update()
@@ -64,6 +66,10 @@ namespace Fish
             {
                 OnHitFloor();
             }
+            if (transform.position.y + sr.bounds.extents.y > GameManager.Instance.GetArenaBounds().max.y)
+            {
+                OnLeaveWater();
+            }
             if (transform.position.x - sr.bounds.extents.x < _leftSide)
             {
                 OnHitLeftSide();
@@ -80,6 +86,27 @@ namespace Fish
 
         protected virtual void OnHitRightSide() { }
 
+        protected virtual async UniTask OnLeaveWater()
+        {
+            if (_state is FishState.Returning or FishState.Captured)
+                return;
+
+            _state = FishState.Returning;
+            var initialRot = transform.rotation.eulerAngles.z;
+            var targetRot = initialRot is < 90 and > -90 ? -1 * initialRot : (180 - initialRot) + 180;
+            var finalRot = Quaternion.AngleAxis(targetRot, Vector3.forward);
+            
+            while (Mathf.Approximately(transform.rotation.eulerAngles.z, targetRot) == false)
+            {
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, finalRot, 30f * Time.deltaTime);
+                await UniTask.Yield();
+            }
+
+            await UniTask.Delay(2000);
+
+            _state = FishState.Moving;
+        }
+        
         public void Capture()
         {
             _state = FishState.Captured;

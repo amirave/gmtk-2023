@@ -6,9 +6,9 @@ using Managers;
 
 namespace DefaultNamespace
 {
-    public class GameplayManager : MonoBehaviour
+    public class GameManager : MonoBehaviour
     {
-        public static GameplayManager Instance { get; private set; }
+        public static GameManager Instance { get; private set; }
 
         [SerializeField] private float _topMargin;
         [SerializeField] private float _scorePerSecond = 100;
@@ -98,8 +98,8 @@ namespace DefaultNamespace
             _hudScreen.gameObject.SetActive(false);
             _deathScreen.gameObject.SetActive(true);
             
-            _deathScreen.SubscribeToButton("retry", () => GameManager.Instance.LoadScene(SceneIndexes.GAME));
-            _deathScreen.SubscribeToButton("main_menu", () => GameManager.Instance.LoadScene(SceneIndexes.MAIN_MENU));
+            _deathScreen.SubscribeToButton("retry", () => LifetimeManager.Instance.LoadScene(SceneIndexes.GAME));
+            _deathScreen.SubscribeToButton("main_menu", () => LifetimeManager.Instance.LoadScene(SceneIndexes.MAIN_MENU));
         }
 
         public Bounds GetArenaBounds()
