@@ -60,7 +60,7 @@ namespace Fish
         
         protected virtual void FishUpdate()
         {
-            if (Mathf.Abs(transform.rotation.eulerAngles.z) >= 90 && Mathf.Abs(transform.rotation.eulerAngles.z) <= 270)
+            if (transform.rotation.eulerAngles.z % 360 >= 90 && transform.rotation.eulerAngles.z % 360 <= 270)
                 sr.flipY = true;
             else
                 sr.flipY = false;

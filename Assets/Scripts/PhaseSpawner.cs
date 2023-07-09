@@ -58,12 +58,12 @@ public class PhaseSpawner : MonoBehaviour
         float timeBetweenSharks = 1 / _difficultySettings.sharkRate.GetCurrent(_now - _difficultySettings.sharkSpawnStart);
 
 
-        if (Time.time > _difficultySettings.pufferSpawnStart)
+        if (Time.time > _difficultySettings.pufferSpawnStart && !_pufferSpawnPlayed)
         {
             _pufferSpawnPlayed = true;
-            AudioManager.Instance.PlayEffect("sufferfish_enter");
+            AudioManager.Instance.PlayEffect("pufferfish_enter");
         }
-        if (Time.time > _difficultySettings.sharkSpawnStart)
+        if (Time.time > _difficultySettings.sharkSpawnStart && !_sharkSpawnPlayed)
         {
             _sharkSpawnPlayed = true;
             AudioManager.Instance.PlayEffect("shark_enter");

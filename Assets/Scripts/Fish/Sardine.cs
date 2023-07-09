@@ -10,6 +10,8 @@ public class Sardine : FishAI
     protected override void Start()
     {
         base.Start();
+
+
     }
 
     protected override void FishUpdate()
