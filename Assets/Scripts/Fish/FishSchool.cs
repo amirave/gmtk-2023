@@ -8,9 +8,19 @@ namespace Fish
     {
         [SerializeField] private GameObject _head;
 
+        private FishAI[] fishes;
+
         private void Start()
         {
             transform.position = _head.transform.position;
+        }
+
+        private void Update()
+        {
+            if (transform.childCount == 1)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

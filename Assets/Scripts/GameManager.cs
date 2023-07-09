@@ -113,6 +113,8 @@ namespace DefaultNamespace
             
             _deathScreen.SubscribeToButton("retry", () => LifetimeManager.Instance.LoadScene(SceneIndexes.GAME));
             _deathScreen.SubscribeToButton("main_menu", () => LifetimeManager.Instance.LoadScene(SceneIndexes.MAIN_MENU));
+
+            _deathScreen.SetTextReplacement("score", ((int)_score).ToString());
         }
 
         public Bounds GetArenaBounds()
@@ -124,7 +126,6 @@ namespace DefaultNamespace
         {
             _score += amount;
             _hudScreen.SetTextReplacement("score", ((int)_score).ToString().PadLeft(6, '0'));
-            _deathScreen.SetTextReplacement("score", ((int)_score).ToString());
         }
 
         public bool IsPlaying()
