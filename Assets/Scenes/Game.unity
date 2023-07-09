@@ -1615,13 +1615,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 217f22efa09dfd54cb37ee6ab189e00b, type: 2}
   - {fileID: 11400000, guid: 755c6ef9b24d26246ae2c478a2f9da25, type: 2}
   - {fileID: 11400000, guid: a06429a132fdc9e43af1f0d071684f0e, type: 2}
-  - {fileID: 11400000, guid: 8c32905785219b1428bd46c5c9cd72b2, type: 2}
-  - {fileID: 11400000, guid: 51caa7f694d81a749ba7837e718a2d6b, type: 2}
   - {fileID: 11400000, guid: 86177db3d6dea4642b145f9994619cc7, type: 2}
-  - {fileID: 11400000, guid: 7a1f441fcd1eecf43b5176fb41da6ac8, type: 2}
-  - {fileID: 11400000, guid: 755c6ef9b24d26246ae2c478a2f9da25, type: 2}
-  _medSpawnPatterns: []
-  _hardSpawnPatterns: []
+  - {fileID: 11400000, guid: 1fa6dcc69a300a0409a94977f22d21d5, type: 2}
+  - {fileID: 11400000, guid: 8c32905785219b1428bd46c5c9cd72b2, type: 2}
+  _medSpawnPatterns:
+  - {fileID: 11400000, guid: 7a7920fa5e5160d4b87da28477fe9d55, type: 2}
+  - {fileID: 11400000, guid: bd6d01b009975ce44b45913a668cc22a, type: 2}
+  - {fileID: 11400000, guid: 32695410afd4ddf4a9c3806953a86872, type: 2}
+  _hardSpawnPatterns:
+  - {fileID: 11400000, guid: 51caa7f694d81a749ba7837e718a2d6b, type: 2}
+  - {fileID: 11400000, guid: 9096f9072f272d84b9b572dd37c04a92, type: 2}
   _pufferSpawn: {fileID: 919667599391091765, guid: 54fdf735ca06a294b8a7b5267b91b5b3, type: 3}
   _sharkSpawn: {fileID: 6311160677611938346, guid: ee0f497a49bffd84084a810b715dce79, type: 3}
 --- !u!1 &718193724
@@ -2285,6 +2288,7 @@ MonoBehaviour:
   _hudScreen: {fileID: 22069338}
   _deathScreen: {fileID: 1780297661}
   difficulty: {fileID: 11400000, guid: 80bd1b199f691c74fbef0747b8c239e6, type: 2}
+  timeSinceStart: 0
 --- !u!4 &1052222413
 Transform:
   m_ObjectHideFlags: 0

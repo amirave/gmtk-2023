@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83f686fc43941a392c2e6aeb4f6fd7d, type: 3}
   m_Name: SardineShotgun
   m_EditorClassIdentifier: 
-  weight: 0
-  randomHeightOffset: 0
-  spawns: []
+  weight: 10
+  randomHeightOffset: 1
+  spawns:
+  - spawnMode: 0
+    school: {fileID: 2161734918445398744, guid: ef729b63c6f317b47802feaa7b8c2400, type: 3}
+    height: 0
+    angle: 0
+    delayUntilNext: 0
+    repeatTimes: 1

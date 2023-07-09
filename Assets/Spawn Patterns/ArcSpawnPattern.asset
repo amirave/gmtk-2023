@@ -12,54 +12,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83f686fc43941a392c2e6aeb4f6fd7d, type: 3}
   m_Name: ArcSpawnPattern
   m_EditorClassIdentifier: 
+  weight: 8
+  randomHeightOffset: 0
   spawns:
   - spawnMode: 0
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
     height: -1
     angle: 60
     delayUntilNext: 0.3
+    repeatTimes: 1
   - spawnMode: 0
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
     height: -1
     angle: 45
     delayUntilNext: 0.3
+    repeatTimes: 1
   - spawnMode: 0
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
     height: -1
     angle: 30
     delayUntilNext: 0.3
+    repeatTimes: 1
   - spawnMode: 0
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
     height: -1
     angle: 15
     delayUntilNext: 0.3
+    repeatTimes: 1
   - spawnMode: 0
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
     height: -1
     angle: 5
     delayUntilNext: 0.3
+    repeatTimes: 1
   - spawnMode: 1
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
     height: -1
     angle: 60
     delayUntilNext: 0.3
+    repeatTimes: 1
   - spawnMode: 1
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
     height: -1
     angle: 45
     delayUntilNext: 0.3
+    repeatTimes: 1
   - spawnMode: 1
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
     height: -1
     angle: 30
     delayUntilNext: 0.3
+    repeatTimes: 1
   - spawnMode: 1
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
     height: -1
     angle: 15
     delayUntilNext: 0.3
+    repeatTimes: 1
   - spawnMode: 1
     school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
     height: -1
     angle: 5
     delayUntilNext: 0.3
+    repeatTimes: 1

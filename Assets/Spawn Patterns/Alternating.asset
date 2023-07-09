@@ -12,28 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83f686fc43941a392c2e6aeb4f6fd7d, type: 3}
   m_Name: Alternating
   m_EditorClassIdentifier: 
+  weight: 10
+  randomHeightOffset: 1
   spawns:
   - spawnMode: 1
     school: {fileID: 1119860251740928410, guid: 0738494ecac920a41bbc6090a359eb3c, type: 3}
-    height: 0.4
+    height: 0.2
     angle: 5
     delayUntilNext: 4
     repeatTimes: 1
   - spawnMode: 0
     school: {fileID: 1119860251740928410, guid: 0738494ecac920a41bbc6090a359eb3c, type: 3}
-    height: 0.4
+    height: 0.2
     angle: 5
     delayUntilNext: 4
     repeatTimes: 1
   - spawnMode: 1
     school: {fileID: 1119860251740928410, guid: 0738494ecac920a41bbc6090a359eb3c, type: 3}
-    height: -0.4
+    height: -0.2
     angle: -10
     delayUntilNext: 4
     repeatTimes: 1
   - spawnMode: 0
     school: {fileID: 1119860251740928410, guid: 0738494ecac920a41bbc6090a359eb3c, type: 3}
-    height: -0.4
+    height: -0.2
     angle: -10
     delayUntilNext: 4
     repeatTimes: 1

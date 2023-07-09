@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83f686fc43941a392c2e6aeb4f6fd7d, type: 3}
   m_Name: BottomCover
   m_EditorClassIdentifier: 
+  weight: 10
+  randomHeightOffset: 0
   spawns:
   - spawnMode: 0
     school: {fileID: 4072858693000730288, guid: a2227804e37f04b4b9bb85747a07f7bf, type: 3}
-    height: -0.8
+    height: -0.7
     angle: -5
     delayUntilNext: 0
     repeatTimes: 1
   - spawnMode: 1
     school: {fileID: 4072858693000730288, guid: a2227804e37f04b4b9bb85747a07f7bf, type: 3}
-    height: -0.8
+    height: -0.7
     angle: -5
     delayUntilNext: 0.2
     repeatTimes: 1

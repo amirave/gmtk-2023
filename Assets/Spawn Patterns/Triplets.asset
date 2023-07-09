@@ -12,4 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83f686fc43941a392c2e6aeb4f6fd7d, type: 3}
   m_Name: Triplets
   m_EditorClassIdentifier: 
-  spawns: []
+  weight: 10
+  randomHeightOffset: 1
+  spawns:
+  - spawnMode: 0
+    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
+    height: 0
+    angle: 0
+    delayUntilNext: 0
+    repeatTimes: 1
+  - spawnMode: 0
+    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
+    height: 0.1
+    angle: 20
+    delayUntilNext: 0
+    repeatTimes: 1
+  - spawnMode: 0
+    school: {fileID: 2842282605803486005, guid: 7e78b549e4ac15a44918036ce4609824, type: 3}
+    height: -0.1
+    angle: -20
+    delayUntilNext: 0
+    repeatTimes: 1

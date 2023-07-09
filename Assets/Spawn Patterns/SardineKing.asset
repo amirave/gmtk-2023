@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83f686fc43941a392c2e6aeb4f6fd7d, type: 3}
   m_Name: SardineKing
   m_EditorClassIdentifier: 
+  weight: 1
+  randomHeightOffset: 1
   spawns:
   - spawnMode: 0
     school: {fileID: 4355886819533449850, guid: 49f0c9d6dff0f3a408a8ec37b8b95d06, type: 3}
-    height: 0.4
+    height: 0
     angle: 0
     delayUntilNext: 0
     repeatTimes: 1

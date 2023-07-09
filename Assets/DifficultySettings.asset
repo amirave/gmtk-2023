@@ -18,9 +18,9 @@ MonoBehaviour:
     timeUntilMax: 60
     unclamped: 0
   phaseRate:
-    min: 0.2
-    max: 0.6
-    timeUntilMax: 60
+    min: 0.5
+    max: 1.5
+    timeUntilMax: 120
     unclamped: 0
   maxFishAllowed:
     min: 30
