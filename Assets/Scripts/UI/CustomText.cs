@@ -17,7 +17,7 @@ namespace UI
         private Func<string, string> _query;
         private MenuScreen _menuScreen;
 
-        public void Start()
+        public void Awake()
         {
             _tmpText = GetComponent<TMP_Text>();
             _originalText = _tmpText.text;

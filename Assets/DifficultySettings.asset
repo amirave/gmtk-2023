@@ -23,9 +23,9 @@ MonoBehaviour:
     timeUntilMax: 60
     unclamped: 0
   maxFishAllowed:
-    min: 0
-    max: 0
-    timeUntilMax: 0
+    min: 30
+    max: 60
+    timeUntilMax: 60
     unclamped: 0
   phaseInternalDelay:
     min: 1
@@ -34,18 +34,18 @@ MonoBehaviour:
     unclamped: 0
   fishSpeed:
     min: 0
-    max: 0
-    timeUntilMax: 0
+    max: 3
+    timeUntilMax: 60
     unclamped: 0
   pufferSpawnStart: 20
   pufferRate:
     min: 0
     max: 0.1
-    timeUntilMax: 150
+    timeUntilMax: 60
     unclamped: 0
   sharkSpawnStart: 10
   sharkRate:
     min: 0
     max: 0.05
-    timeUntilMax: 150
+    timeUntilMax: 60
     unclamped: 0

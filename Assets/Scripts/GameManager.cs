@@ -1,5 +1,6 @@
 ﻿using System;
 using Audio;
+using Cysharp.Threading.Tasks;
 using UI.Screens;
 using UnityEngine;
 using Managers;
@@ -15,6 +16,7 @@ namespace DefaultNamespace
         [SerializeField] public HookMovement player;
         [SerializeField] private Sprite[] _emotionSprites;
         
+        [SerializeField] private Animator _tutorial;
         [SerializeField] private HudMenuScreen _hudScreen;
         [SerializeField] private DeathMenuScreen _deathScreen;
 
@@ -49,16 +51,27 @@ namespace DefaultNamespace
             _deathScreen.gameObject.SetActive(false);
         }
 
-        void Start()
+        async void Start()
         {
+            AudioManager.Instance.PlayMusicTrack("game_theme_chill");
+            _hudScreen.SetTextReplacement("score", "000000");
+            
+            await UniTask.Delay(1000);
+            
+            _tutorial.gameObject.SetActive(true);
+            _tutorial.Play("Tutorial");
+            
+            await UniTask.Delay((int)(1000 * _tutorial.GetCurrentAnimatorStateInfo(0).length));
+            
+            _tutorial.gameObject.SetActive(false);
+            
             _phaseSpawner.Begin();
             _hudScreen.SetEmotion(_emotionSprites[0]);
 
             player.OnCaptureFish.AddListener(OnPlayerDamage);
             player.OnDeath.AddListener(OnPlayerDeath);
-            
-            AudioManager.Instance.PlayMusicTrack("game_theme_chill");
-            
+            player._idleTime = 0;
+
             _isPlaying = true;
         }
 
@@ -111,6 +124,12 @@ namespace DefaultNamespace
         {
             _score += amount;
             _hudScreen.SetTextReplacement("score", ((int)_score).ToString().PadLeft(6, '0'));
+            _deathScreen.SetTextReplacement("score", ((int)_score).ToString());
+        }
+
+        public bool IsPlaying()
+        {
+            return _isPlaying;
         }
     }
 }
